@@ -1,3 +1,7 @@
+<?php
+session_start();
+include 'koneksi.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
     -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cessgo</title>
+    <title>Login | CESSGO</title>
     <meta name="description" content="Roxy">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -32,11 +36,13 @@
 </head>
 <body data-spy="scroll" data-target="#navbar" class="static-layout">
 	<nav id="header-navbar" class="navbar navbar-expand-lg py-4">
+        <!-- Set Flash -->
+        
     <div class="container">
         <a class="navbar-brand d-flex align-items-center text-purple" href="index.php">
             <h2 class="font-weight-bolder mb-0">CESSGO</h2>
         </a>
-        <a class="navbar-brand d-flex align-items-center text-purple" href="index.php">
+        <!-- <a class="navbar-brand d-flex align-items-center text-purple" href="index.php">
             <h5 class="font-weight-bolder mb-0">Home</h5>
         </a>
         <a class="navbar-brand d-flex align-items-center text-purple" href="program.php">
@@ -44,7 +50,7 @@
         </a>
         <a class="navbar-brand d-flex align-items-center text-purple" href="Testimoni.php">
             <h5 class="font-weight-bolder mb-0">Testimoni</h5>
-        </a>
+        </a> -->
        
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header" aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,23 +111,26 @@
                             </p>
                             <hr>
                             <form action="proses_login.php" method="post">
+                                <?= flashSistem(); ?>
                             <div class="form-group">
                             
                                 <label class="text-light" for="username">NIM*</label>
-                                <input type="username" name="username" class="form-control">
+                                <input type="username" name="username" placeholder="Masukan NIM" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="text-light" for="password">Password*</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password" placeholder="Masukan Password" class="form-control">
                             </div>
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label text-light" for="exampleCheck1">Remember Me</label>
                             </div>
                             <button type="submit" name="login"  class="btn btn-block btn-yellow">Masuk</button>
-                           
+                            
+                            
                         </form>
-
+                        
+                       <p class="text-white mt-3">Kembali Ke WEBSITE Klick <a href="index.php" class="">Disini</a> </p> 
                     </div>
                 </div>
             </div>
@@ -134,5 +143,7 @@
     <script src="assets/jquery/dist/jquery.min.js"></script>
     <script src="assets/popperjs/dist/umd/popper.min.js"></script>
     <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/myscript.js"></script>
 </body>
 </html>

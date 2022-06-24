@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require 'koneksi.php';
 // Ambil data dari tblmhs
 $result = mysqli_query($conn, "SELECT * FROM user")
@@ -40,9 +41,9 @@ $result = mysqli_query($conn, "SELECT * FROM user")
 <?php 
 session_start();
 // cek apakah yang mengakses halaman ini sudah login
-if($_SESSION['level']==""){
-header("location:login.php?pesan=gagal");
-}
+// if($_SESSION['level']==""){
+// header("location:login.php?pesan=gagal");
+// }
 ?>
 <body data-spy="scroll" data-target="#navbar" class="static-layout">
 	<nav id="header-navbar" class="navbar navbar-expand-lg py-4">
@@ -568,5 +569,7 @@ header("location:login.php?pesan=gagal");
 	<!-- Main JS -->
 	<script src="js/app.min.js "></script>
 	<script src="//localhost:35729/livereload.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/myscript.js"></script>
 </body>
 </html>

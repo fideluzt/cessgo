@@ -4,8 +4,10 @@
 
 <?php 
 require 'koneksi.php';
+$bidang_studi = getData("SELECT * FROM bidang_studi");
 // Ambil data dari projekuas
-$result = mysqli_query($conn, "SELECT * FROM user")
+$result = mysqli_query($conn, "SELECT * FROM user");
+
 ?>
     <!--
      - Roxy: Bootstrap template by GettTemplates.com
@@ -13,7 +15,7 @@ $result = mysqli_query($conn, "SELECT * FROM user")
     -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cessgo</title>
+    <title>Registerasi | CESSGO</title>
     <meta name="description" content="Roxy">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -45,7 +47,7 @@ $result = mysqli_query($conn, "SELECT * FROM user")
         <a class="navbar-brand d-flex align-items-center text-purple" href="index.php">
             <h2 class="font-weight-bolder mb-0">CESSGO</h2>
         </a>
-        <a class="navbar-brand d-flex align-items-center text-purple" href="index.php">
+        <!-- <a class="navbar-brand d-flex align-items-center text-purple" href="index.php">
             <h5 class="font-weight-bolder mb-0">Home</h5>
         </a>
         <a class="navbar-brand d-flex align-items-center text-purple" href="program.php">
@@ -53,7 +55,7 @@ $result = mysqli_query($conn, "SELECT * FROM user")
         </a>
         <a class="navbar-brand d-flex align-items-center text-purple" href="Testimoni.php">
             <h5 class="font-weight-bolder mb-0">Testimoni</h5>
-        </a>
+        </a> -->
        
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header" aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +88,7 @@ $result = mysqli_query($conn, "SELECT * FROM user")
     <link rel="stylesheet" href="assets/app/css/style.css">
     <link rel="stylesheet" href="assets/app/css/main.css">
 
-    <title>Login CESSGO</title>
+    <title>Registerasi | CESSGO</title>
 </head>
 <body>
 
@@ -101,7 +103,7 @@ $result = mysqli_query($conn, "SELECT * FROM user")
             <div class="col-lg-5 my-auto d-none d-lg-block">
                 <img src="img/22.jpeg" class="img-fluid">
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-5 col-md-6">
 
                 <div class="card border-0 bg-purple-dark shadow">
                     <div class="card-body">
@@ -110,59 +112,47 @@ $result = mysqli_query($conn, "SELECT * FROM user")
                             <h3 class="text-light">Registrasi data</h3>
 
                             <p>
-                                <small class="text-light">*Username menggunakan NIM</small>
+                                <small class="text-light"><b>*Username menggunakan NIM</b></small>
                             </p>
                             <hr>
                             <form action="proses tambah data.php" method="post">
+                                <?= flashSistem(); ?>
                             <div class="form-group">
                             
-                                <label class="text-light" id="username" for="username">Username </label>
-                                <input type="username" name="username" class="form-control">
+                                <label class="text-light" id="username" for="username">NIM/NPM </label>
+                                <input type="number" placeholder="Masukan NIM/NPM" required name="username" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="text-light" id="nama" for="name">Nama </label>
-                                <input type="name" name="nama" class="form-control">
+                                <input type="name"  placeholder="Masukan Nama Lengkap" required name="nama" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="text-light" id="email" for="email">Email </label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email"  placeholder="Masukan Email" required name="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="text-light" id="password" for="password">Password </label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" placeholder="Masukan Password..." required name="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="text-light"  for="konfirmasi_password">Konfirmasi Password </label>
+                                <input type="password" id="konfirmasi_password" required placeholder="Konfirmasi Password..." name="konfirmasi_password" class="form-control">
                             </div>
                             <div class="form-label-group">
                                 <label class="text-light" id="kelas">Bidang</label>
-                                <select class="form-control" id="kelas" for="kelas" name="kelas">
-                                <option value=></option>
-                                <option value="fotografi">Fotografi</option>
-                                <option value="videografi">Videografi</option>
-                                <option value="desain grafis">Desain Grafis</option>
-                                <option value="animasi">Animasi</option>
-                                <option value="web junior">Web Junior</option>
-                                <option value="web intermediate">Web Intermediate</option>
-                                <option value="kendali cerdas">Kendali Cerdas</option>
+                                <select class="form-control" id="kelas" for="kelas" name="kelas" required>
+                                <option value="">--Pilih Bidang--</option>
+                                <?php foreach($bidang_studi as $studi) : ?>
+                                    <option <?= @$_GET["bidang"] == $studi["nama_bidang"] ? "selected" : ""; ?> value="<?= $studi["nama_bidang"] ?>"><?= $studi["nama_bidang"] ?></option>
+                                <?php endforeach; ?>
                             </select>
                             </div>
                             <div class="form-group">
-                                <!-- <label class="text-light" id="level" for="level">Level </label>
-                                <select class="form-control" name="level">
-                                <option value="admin">admin</option>
-                                  <option value="mentor">mentor</option>
-                                   <option value="mahasiswa">mahasiswa</option>
-
-                                  
-                                </select>  -->
                             </div>
-                           
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label text-light" for="exampleCheck1">Remember Me</label>
-                            </div>
-                            <button type="submit" name="submit"  class="btn btn-block btn-yellow">Submit</button>
+                            <button type="submit" name="submit"  class="btn btn-block btn-yellow">Daftar</button>
                            
                         </form>
-
+                            <p class="text-white mt-3">Kembali Ke WEBSITE Klick <a href="index.php" class="">Disini</a> </p> 
                     </div>
                 </div>
             </div>
@@ -175,5 +165,7 @@ $result = mysqli_query($conn, "SELECT * FROM user")
     <script src="assets/jquery/dist/jquery.min.js"></script>
     <script src="assets/popperjs/dist/umd/popper.min.js"></script>
     <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/myscript.js"></script>
 </body>
 </html>

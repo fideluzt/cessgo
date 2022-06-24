@@ -1,15 +1,14 @@
 <?php 
+session_start();
                 include "koneksi.php";
                 $select = mysqli_query($conn, 'select * from user');
                 while($data = mysqli_fetch_array($select)){
             ?>
 <?php
-session_start();
 // cek apakah yang mengakses halaman ini sudah login
 if($_SESSION['username']==""){
 header("location:index.php?pesan=gagal");
 }
-include 'koneksi.php';
 $a=$_SESSION['username'];
 $query = "SELECT * FROM user WHERE username='$a'";
 $result = mysqli_query($conn,$query);
@@ -586,6 +585,8 @@ $result = mysqli_query($conn,$query);
 	<!-- Main JS -->
 	<script src="js/app.min.js "></script>
 	<script src="//localhost:35729/livereload.js"></script>
+     <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/myscript.js"></script>
 </body>
 </html>
 <?php } ?>

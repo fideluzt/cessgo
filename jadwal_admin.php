@@ -40,9 +40,9 @@ $result = mysqli_query($conn, "SELECT * FROM jadwal")
 <?php 
 session_start();
 // cek apakah yang mengakses halaman ini sudah login
-if($_SESSION['level']==""){
-header("location:login.php?pesan=gagal");
-}
+// if($_SESSION['level']==""){
+// header("location:login.php?pesan=gagal");
+// }
 ?>
 <body data-spy="scroll" data-target="#navbar" class="static-layout">
 	<nav id="header-navbar" class="navbar navbar-expand-lg py-4">
