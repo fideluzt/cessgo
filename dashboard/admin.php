@@ -2,10 +2,9 @@
 include '../template/admin/head.php' ?>
 <?php include '../template/admin/sidebar.php' ?>
 <?php
-// $data_mahasiswa = count(getData("SELECT * FROM data_mahasiswa"));
-// $data_dosen = count(getData("SELECT * FROM data_dosen"));
-// $dsn_terdatar = count(getData("SELECT * FROM tbl_login WHERE level = '3'"));
-// $mhs_terdaftar = count(getData("SELECT * FROM tbl_login WHERE level = '1'"));
+$data_peserta = count(getData("SELECT * FROM user WHERE `level` = 'mahasiswa'"));
+$data_mentor = count(getData("SELECT * FROM user WHERE `level` =  'mentor'"));
+$jml_kelas = count(getData("SELECT * FROM bidang_studi"));
 ?>
 
 
@@ -19,8 +18,8 @@ include '../template/admin/head.php' ?>
             <div class="small-box bg-info">
               <div class="inner">
                 <h3></h3>
-
-                <p>Data Mahasiswa</p>
+                <h3><?= $data_peserta; ?> Orang</h3>
+                <p>Data Peserta</p>
               </div>
               <div class="icon">
                 <i class="fa-solid fa-database"></i>
@@ -33,9 +32,9 @@ include '../template/admin/head.php' ?>
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3></h3>
+                  <h3><?= $data_mentor; ?> Orang</h3>
 
-                <p>Dosen Terdaftar</p>
+                <p>Data Mentor</p>
               </div>
               <div class="icon">
                 <i class="fa-solid fa-chalkboard-user"></i>
@@ -48,9 +47,9 @@ include '../template/admin/head.php' ?>
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3></h3>
+                  <h3><?= $jml_kelas; ?> Bidang/Kelas</h3>
 
-                <p> Mahasiswa Terfaftar</p>
+                <p> Jumlah Bidang/Kelas</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>

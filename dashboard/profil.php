@@ -2,8 +2,24 @@
 include '../template/admin/head.php' ?>
 <?php include '../template/admin/sidebar.php' ?>
 <?php
+// include '../koneksi.php';
 $username = $_SESSION["username"];
 $data_user = getData("SELECT * FROM user WHERE username = '$username'")[0];
+
+// edit profil
+if(isset($_POST["btn-simpan"])){
+  if(updateProfil($_POST) > 0){
+    setFlash("Diupdate", "True", "Profil");
+    echo "<script>
+      document.location.href = 'profil.php';
+    </script>";
+  }else{
+    setFlash("Diupdate", "False", "Profil");
+    echo "<script>
+      document.location.href = 'profil.php';
+    </script>";
+  }
+}
 ?>
 
 
@@ -13,7 +29,7 @@ $data_user = getData("SELECT * FROM user WHERE username = '$username'")[0];
         <!-- Edit Profil -->
         <?php if(isset($_GET["editProfil"])) : ?>
           <div class="row">
-             <form action="" method="post">
+             <form action="" method="post" enctype="multipart/form-data">
                   <div class="col-lg-4">
                       <img src="../img/profile/<?= $data_user["foto"]; ?>" alt="Foto Profil" width="150px">
                       <div class="col-lg-4">

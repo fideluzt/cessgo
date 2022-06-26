@@ -19,6 +19,49 @@ function getData($query) {
 
 }
 
+// Function uploadGambar
+function uploadGambar($path){
+    $namaFile = $_FILES["gambar"]["name"];
+    $ukuranFIle = $_FILES["gambar"]["size"];
+    $error = $_FILES["gambar"]["error"];
+    $tmpName = $_FILES["gambar"]["tmp_name"];
+
+    if($error === 4){
+        echo "<script>
+            alert('File Belum Di Upload!!');
+        </script>";
+        return false;
+    }
+
+    $ekstensiValid = ["jpeg", "jpg", "png"];
+    // foto1.jpg => ["foto1", "jpg"]
+    $ekstensiFile = explode(".", $namaFile);
+    $ekstensiFile = strtolower(end($ekstensiFile)); // jpg
+
+    if(!in_array($ekstensiFile, $ekstensiValid)){
+        echo "<script>
+            alert('Ekstensi File tidak valid');
+        </script>";
+        return false;
+    }
+
+    if($ukuranFIle > 1000000){
+        echo "<script>
+            alert('Ukuran File Terlalu Besar');
+        </script>";
+        return false;
+    }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiFile;
+
+    move_uploaded_file($tmpName, $path . $namaFileBaru );
+
+    return $namaFileBaru;
+
+}
+
 function changePassword($data){
         global $conn;
         $username = htmlspecialchars($data["username"]);
@@ -47,6 +90,28 @@ function changePassword($data){
                     return false;
                     
             }
+    }
+
+    function updateProfil($data){
+        global $conn;
+        $nim = $data["nim"];
+        $nama = $data["nama"];
+        $email = $data["email"];
+        $fotoLama = $data["gambar_lama"];
+        if($_FILES["gambar"]["error"] === 4){
+            $foto = $fotoLama;
+        }else{
+            if($fotoLama !== "user.jpg"){
+                if(file_exists("../img/profile/$fotoLama")){
+                    unlink("../img/profile/$fotoLama");
+                }
+            }
+            $foto = uploadGambar("../img/profile/");
+        }
+
+        mysqli_query($conn, "UPDATE user SET nama = '$nama', email = '$email', foto = '$foto' WHERE username = '$nim'");
+        return mysqli_affected_rows($conn);
+
     }
 
 

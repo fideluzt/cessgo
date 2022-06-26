@@ -3,10 +3,7 @@ session_start();
 include '../template/admin/head.php' ?>
 <?php include '../template/admin/sidebar.php' ?>
 <?php 
-// include '../koneksi.php';
-$data_mahasiswa = getData("SELECT * FROM data_mahasiswa");
-
-
+$data_mahasiswa = getData("SELECT * FROM user WHERE level != 'admin'");
 ?>
 
    <!-- Main content -->
@@ -17,7 +14,7 @@ $data_mahasiswa = getData("SELECT * FROM data_mahasiswa");
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"> <b>Data Mahasiswa Yang Mengikuti UKM/ORMAWA/KOMUNITAS</b></h3>
+                <h3 class="card-title"> <b>Data Peserta Yang Mengikuti CESSGO</b></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -26,10 +23,10 @@ $data_mahasiswa = getData("SELECT * FROM data_mahasiswa");
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>NAO</th>
                     <th>NPM</th>
                     <th>Nama</th>
-                    <th>Status</th>
+                    <th>Kelas</th>
+                    <th>Email</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -39,36 +36,24 @@ $data_mahasiswa = getData("SELECT * FROM data_mahasiswa");
                     foreach($data_mahasiswa as $mahasiswa) : ?>
                       <tr>
                         <td><?= $no++; ?></td>
-                        <td><?= $mahasiswa["nao"]; ?></td>
-                        <td><?= $mahasiswa["npm"]; ?></td>
+                        <td><?= $mahasiswa["username"]; ?></td>
                         <td><?= $mahasiswa["nama"]; ?></td>
-                        <td>
-                          <?php
-                          $npm = $mahasiswa["npm"];
-                            $data_user = getData("SELECT * FROM tbl_login WHERE npm = '$npm'");
-                            // var_dump($data_user);
-                            // die();
-                            if(!empty($data_user)){
-                              echo '<span class="badge badge-success">Terdaftar</span>';
-                            }else {
-                              echo '<span class="badge badge-warning">Belum Terdaftar</span>';
-                            }
-                          ?>
-                        </td>
+                        <td><?= $mahasiswa["kelas"]; ?></td>
+                        <td><?= $mahasiswa["email"]; ?></td>
                         <td>
                           <a href="#" class="badge badge-info">Lihat</a>
-                          <a href="../proses_hapus.php?aksi=hapusMahasiswa&npm=<?= $mahasiswa["npm"]; ?>" class="badge badge-danger hapusMahasiswa" data-konfirmasi="<?= $mahasiswa["nama"]; ?>">Hapus</a>
+                          <a href="../proses_hapus.php?aksi=hapusUser&username=<?= $mahasiswa["username"]; ?>" class="badge badge-danger hapusMahasiswa" data-konfirmasi="<?= $mahasiswa["nama"]; ?>">Hapus</a>
                         </td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>No</th>
-                    <th>NAO</th>
+                     <th>No</th>
                     <th>NPM</th>
                     <th>Nama</th>
-                    <th>Status</th>
+                    <th>Kelas</th>
+                    <th>Email</th>
                     <th>Aksi</th>
                   </tr>
                   </tfoot>

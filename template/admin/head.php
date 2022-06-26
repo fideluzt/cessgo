@@ -1,6 +1,8 @@
 <?php
 if(!session_id())session_start();
 include '../koneksi.php';
+$username = $_SESSION["username"];
+$data_user = getData("SELECT * FROM user WHERE username = '$username'");
 $url = $_SERVER['REQUEST_URI'];
 
 $url = explode("/cessgo/",$url)[1];
@@ -24,10 +26,26 @@ switch ($request_uri) {
     $bread = "Profil";
     $link = "profil.php";
     break;
+  case '/cessgo/dashboard/admin.php':
+    $title="Dashboard | CESSGO";
+    $bread = "Dashboard";
+    $link = "admin.php";
+    break;
+  case '/cessgo/dashboard/data_peserta.php':
+    $title="Data Peserta | CESSGO";
+    $bread = "Data Peserta";
+    $link = "data_peserta.php";
+    break;
+  case '/cessgo/dashboard/jadwal_admin.php':
+    $title="Jadwal Kelas | CESSGO";
+    $bread = "Jadwal Kelas";
+    $link = "jadwal_admin.php";
+    break;
   default:
   $title="Dashboard | CESSGO";
    $bread = "Dashboard";
     $link = "admin.php";
+
  
 }
 ?>

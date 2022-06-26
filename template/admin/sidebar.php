@@ -13,10 +13,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../img/profile/user.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../img/profile/<?= $data_user[0]["foto"] === '' ? "user.jpg" : $data_user[0]["foto"];  ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?= $_SESSION["nama"]; ?></a>
+          <a href="#" class="d-block"><?= $data_user[0]["nama"]; ?></a>
         </div>
       </div>
 
@@ -38,7 +38,7 @@
             </li>
             <li class="nav-item menu-open">
               <a href="jadwal_mhs.php" class="nav-link mt-2 <?= ($link=='jadwal_mhs.php') ? 'active' : ''?>">
-              <i class="nav-icon fa-solid fa-certificate"></i>
+             <i class="nav-icon fa-solid fa-calendar-days"></i>
                 <p>
                   Jadwal Kelas
                 </p>
@@ -47,7 +47,7 @@
           <?php endif; ?>
           <?php if($_SESSION["level"] == 'admin') : ?>
           <li class="nav-item menu-open">
-            <a href="dashboard.php" class="nav-link <?= ($link=='dashboard.php') ? 'active' : ''?>">
+            <a href="admin.php" class="nav-link <?= ($link=='admin.php') ? 'active' : ''?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -55,7 +55,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="data_mahasiswa.php" class="nav-link mt-2 <?= ($link=='data_mahasiswa.php') ? 'active' : ''?>">
+            <a href="data_peserta.php" class="nav-link mt-2 <?= ($link=='data_peserta.php') ? 'active' : ''?>">
                 <i class="nav-icon fa-solid fa-database"></i>
               <p>
                 Data Peserta
@@ -63,10 +63,10 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="data_user.php" class="nav-link mt-2 <?= ($link=='data_user.php') ? 'active' : ''?>">
+            <a href="jadwal_admin.php" class="nav-link mt-2 <?= ($link=='jadwal_admin.php') ? 'active' : ''?>">
               <i class="nav-icon fa-solid fa-users"></i>
               <p>
-                Data User
+                Jadwal Kelas & Mentor
               </p>
             </a>
           </li>

@@ -2,6 +2,8 @@
 
  ?>
 <?php include '../template/admin/sidebar.php';
+$kelas = $data_user[0]["kelas"];
+$jadwal_kelas = getData("SELECT * FROM jadwal WHERE kelas = '$kelas'");
 
  ?>
 
@@ -26,13 +28,27 @@
                   <table id="data_user" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                      <th>No</th>
+                     <th>No</th>
                       <th>Hari</th>
                       <th>Ruang</th>
+                      <th>Kelas</th>
                       <th>Jam</th>
+                      <th>Mentor</th>
                     </tr>
                     </thead>
                     <tbody>
+                      <?php 
+                    $no = 1;
+                    foreach($jadwal_kelas as $jadwal) : ?>
+                      <tr>
+                        <td><?= $no++; ?></td>
+                        <td><?= $jadwal["hari"]; ?></td>
+                        <td><?= $jadwal["ruang"]; ?></td>
+                        <td><?= $jadwal["kelas"]; ?></td>
+                        <td><?= $jadwal["waktu"]; ?></td>
+                        <td><?= $jadwal["mentor"] === '' ? "-" : $jadwal["mentor"]; ?></td>
+                      </tr>
+                    <?php endforeach; ?>
                     
                     </tbody>
                   </table>
