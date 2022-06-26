@@ -3,6 +3,7 @@
  ?>
 <?php include '../template/admin/sidebar.php';
 $kelas = $data_user[0]["kelas"];
+
 $jadwal_kelas = getData("SELECT * FROM jadwal WHERE kelas = '$kelas'");
 
  ?>
