@@ -41,8 +41,8 @@ $data_mahasiswa = getData("SELECT * FROM user WHERE level != 'admin'");
                         <td><?= $mahasiswa["kelas"]; ?></td>
                         <td><?= $mahasiswa["email"]; ?></td>
                         <td>
-                          <a href="#" class="badge badge-info">Lihat</a>
-                          <a href="../proses_hapus.php?aksi=hapusUser&username=<?= $mahasiswa["username"]; ?>" class="badge badge-danger hapusMahasiswa" data-konfirmasi="<?= $mahasiswa["nama"]; ?>">Hapus</a>
+                          <!-- <a href="#" class="badge badge-info">Lihat</a> -->
+                          <a href="../proses_hapus.php?aksi=hapusPeserta&npm=<?= $mahasiswa["username"]; ?>" class="badge badge-danger hapusMahasiswa" data-konfirmasi="<?= $mahasiswa["nama"]; ?>">Hapus</a>
                         </td>
                       </tr>
                     <?php endforeach; ?>

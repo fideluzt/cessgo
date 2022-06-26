@@ -84,7 +84,7 @@ function changePassword($data){
             }
         }else {
             infoFlash("Password lama salah!");
-            //  echo '<script type="text/javascript">
+            //  echo '<scrip type="text/javascript">
             //         alert("Password Lama Salah!");
             //         </script>'; 
                     return false;
@@ -161,42 +161,101 @@ function changePassword($data){
     }
     }
 
+
+// Proses Halaman Jadwal Admin
+// Tambah Mentor 
+    function tambahMentor($data){
+        global $conn;
+        $npm_mentor = $data["npm_mentor"];
+        $nama_mentor = $data["nama_mentor"];
+        $kelas = $data["kelas"];
+        $email_mentor = $data["email_mentor"];
+        $password = random_int(100000, 1000000);
+        $pesan = "Hallo $nama_mentor saat ini kamu terdaftar sebagai mentor CESSGO Teknik Komputer 2020 silahkan login menggunakan <br> <b>Username : $npm_mentor</b> <br> <b>Password : $password</b> <br><br><br> !Kami sarankan agar anda segera mengganti passwordnya";
+        $resp = notifikasi($nama_mentor, $email_mentor, "Mentor Password - CESSGO", $pesan );
+        $resp = json_decode($resp, true);
+        if($resp["statusCode"] == 200){
+            echo "<script>
+                console.log('Email Berhasil Dikirim!');
+            </script>";
+        }else{
+            return false;
+        }
+        $password = md5($password);
+        mysqli_query($conn, "INSERT INTO user VALUES('', '$npm_mentor', '$nama_mentor', '$email_mentor', '$password', '$kelas', 'mentor', 'user.jpg')");
+        return mysqli_affected_rows($conn);
+    }
+    
+    // Proses Halaman Jadwal Admin
+    // Tambah Bidang Studi 
+        function tambahBidangStudi($data){
+            global $conn;
+            $nama_bidang = $data["nama_bidang"];
+            $deskripsi_bidang = $data["deskripsi_bidang"];
+            $kuota = $data["kuota"];
+            $foto = uploadGambar("../img/bidang_studi/");
+            mysqli_query($conn, "INSERT INTO bidang_studi VALUES('', '$nama_bidang', '$deskripsi_bidang', '$kuota', '-', '$foto')");
+            return mysqli_affected_rows($conn);
+        }
+    // Update Bidang Studi
+        function updateBidangStudi($data){
+            global $conn;
+            $nama_bidang = $data["nama_bidang"];
+            $deskripsi_bidang = $data["deskripsi_bidang"];
+            $kuota = $data["kuota"];
+            $mentor = $data["mentor"];
+            $fotoLama = $data["gambar_lama"];
+            if($_FILES["gambar"]["error"] === 4){
+                $foto = $fotoLama;
+            }else{
+                if(file_exists("../img/bidang_studi/$fotoLama")){
+                    unlink("../img/bidang_studi/$fotoLama");
+                 }
+                $foto = uploadGambar("../img/bidang_studi/");
+            }
+            mysqli_query($conn, "UPDATE bidang_studi SET nama_bidang = '$nama_bidang', deskripsi = '$deskripsi_bidang', kuota = '$kuota', mentor = '$mentor', '$foto'");
+            return mysqli_affected_rows($conn);
+        }
+    
 // API Kirim email
-function kirimEmail($namaPenerima, $emailPenerima, $pesan){
-$url = "https://fimail.vercel.app/send";
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-$headers = array(
-   "Content-Type: application/json",
-);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    function notifikasi($namaPenerima, $emailPenerima, $subject, $pesan){
+    $url = "https://fimail.vercel.app/send";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-$data = <<<DATA
-{
-    "from": {
-        "name": "$namaPenerima",
-        "address": "$emailPenerima"
-    },
-    "to": {
-        "name": "Admin Cessgo",
-        "address": "anissa.fidelia@gmail.com"
-    },
-    "subject": "Pesan Kontak - WEB CESSGO",
-    "contents": "$pesan"
-}
+    $headers = array(
+    "Content-Type: application/json",
+    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+    $data = <<<DATA
+    {
+        "from": {
+            "name": "Admin CESSGO",
+            "address": "anissa.fidelia@gmail.com"
+        },
+        "to": {
+            "name": "$namaPenerima",
+            "address": "$emailPenerima"
+        },
+        "subject": "$subject",
+        "contents": "$pesan"
+    }
 DATA;
 
-curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
-//for debug only!
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    //for debug only!
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-$resp = curl_exec($curl);
-curl_close($curl);
-return $resp;
+    $resp = curl_exec($curl);
+    curl_close($curl);
+    return $resp;
 }
+
+
 ?>

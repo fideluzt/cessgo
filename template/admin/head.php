@@ -41,6 +41,16 @@ switch ($request_uri) {
     $bread = "Jadwal Kelas";
     $link = "jadwal_admin.php";
     break;
+  case '/cessgo/dashboard/daftar_bidang.php':
+    $title="Bidang Studi | CESSGO";
+    $bread = "Bidang Studi";
+    $link = "daftar_bidang.php";
+    break;
+  case '/cessgo/dashboard/data_testimoni.php':
+    $title="Data Testimoni | CESSGO";
+    $bread = "Data Testimoni";
+    $link = "data_testimoni.php";
+    break;
   default:
   $title="Dashboard | CESSGO";
    $bread = "Dashboard";
@@ -78,11 +88,7 @@ switch ($request_uri) {
   <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="../dist/sweetalert2.min.css">
-  <style>
-    a{
-      text-decoration: none;
-    }
-  </style>
+  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

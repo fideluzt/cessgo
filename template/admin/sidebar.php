@@ -45,6 +45,24 @@
               </a>
             </li>
           <?php endif; ?>
+          <?php if($_SESSION["level"] == 'mentor') : ?>
+            <li class="nav-item menu-open">
+              <a href="profil.php" class="nav-link mt-2 <?= ($link=='profil.php') ? 'active' : ''?>">
+                <i class="nav-icon fa-solid fa-user"></i>
+                <p>
+                  Profil
+                </p>
+              </a>
+            </li>
+            <li class="nav-item menu-open">
+              <a href="jadwal_mhs.php" class="nav-link mt-2 <?= ($link=='jadwal_mhs.php') ? 'active' : ''?>">
+             <i class="nav-icon fa-solid fa-calendar-days"></i>
+                <p>
+                  Absensi
+                </p>
+              </a>
+            </li>
+          <?php endif; ?>
           <?php if($_SESSION["level"] == 'admin') : ?>
           <li class="nav-item menu-open">
             <a href="admin.php" class="nav-link <?= ($link=='admin.php') ? 'active' : ''?>">
@@ -67,6 +85,22 @@
               <i class="nav-icon fa-solid fa-users"></i>
               <p>
                 Jadwal Kelas & Mentor
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="daftar_bidang.php" class="nav-link mt-2 <?= ($link=='daftar_bidang.php') ? 'active' : ''?>">
+              <i class="nav-icon fa-solid fa-graduation-cap"></i>
+              <p>
+                Bidang Studi
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="data_testimoni.php" class="nav-link mt-2 <?= ($link=='data_testimoni.php') ? 'active' : ''?>">
+          <i class="nav-icon fa-solid fa-bell"></i>
+              <p>
+                Data Testimoni
               </p>
             </a>
           </li>

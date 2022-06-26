@@ -1,7 +1,7 @@
 <?php require 'template/head.php'; ?>
 	
 </div>	
-    <video id="video" width="100%" height="100%" autoplay muted loop>
+    <video id="video" width="100%" height="100%" autoplay loop>
       <source src="testimoni.mp4" type="video/mp4">
       <div class="container text-center" >
     <h1 class="display-2 mb-4">Testimoni</h1>

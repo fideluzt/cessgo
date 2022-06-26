@@ -17,14 +17,13 @@ $jml_kelas = count(getData("SELECT * FROM bidang_studi"));
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3></h3>
                 <h3><?= $data_peserta; ?> Orang</h3>
                 <p>Data Peserta</p>
               </div>
               <div class="icon">
                 <i class="fa-solid fa-database"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="data_peserta.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -39,7 +38,7 @@ $jml_kelas = count(getData("SELECT * FROM bidang_studi"));
               <div class="icon">
                 <i class="fa-solid fa-chalkboard-user"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="jadwal_admin.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -47,14 +46,14 @@ $jml_kelas = count(getData("SELECT * FROM bidang_studi"));
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                  <h3><?= $jml_kelas; ?> Bidang/Kelas</h3>
+                  <h3><?= $jml_kelas; ?> Bidang</h3>
 
-                <p> Jumlah Bidang/Kelas</p>
+                <p> Bidang Studi</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                 <i class="fa-solid fa-graduation-cap"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="daftar_bidang.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
