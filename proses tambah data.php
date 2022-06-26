@@ -25,7 +25,7 @@ if($_POST["password"] !== $_POST["konfirmasi_password"]){
 }
 // query insert data
 $query="INSERT INTO user VALUES
-   ('', '$username', '$nama', '$email','$password', '$kelas', 'mahasiswa')";
+   ('', '$username', '$nama', '$email','$password', '$kelas', 'mahasiswa', 'user.jpg')";
   $hasil = mysqli_query($conn, $query);
 
    // cek apakah data berhasil ditambahkan atau tidak

@@ -182,7 +182,7 @@ $data = <<<DATA
     },
     "to": {
         "name": "Admin Cessgo",
-        "address": "irpansyah810@gmail.com"
+        "address": "anissa.fidelia@gmail.com"
     },
     "subject": "Pesan Kontak - WEB CESSGO",
     "contents": "$pesan"
