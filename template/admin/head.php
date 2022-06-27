@@ -51,6 +51,11 @@ switch ($request_uri) {
     $bread = "Data Testimoni";
     $link = "data_testimoni.php";
     break;
+  case '/cessgo/dashboard/kirim_testimoni.php':
+    $title="Kirim Testimoni | CESSGO";
+    $bread = "Kirim Testimoni";
+    $link = "kirim_testimoni.php";
+    break;
   default:
   $title="Dashboard | CESSGO";
    $bread = "Dashboard";

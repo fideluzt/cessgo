@@ -12,19 +12,42 @@ if(isset($_GET["aksi"])){
             echo '<script>window.location="dashboard/data_peserta.php";</script>';
         }
     }
-    else if($_GET["aksi"] === "hapusPrestasi"){
+    else if($_GET["aksi"] === "hapusMentor"){
         $id = $_GET["id"];
-        $data_prestasi = getData("SELECT * FROM data_mahasiswa_prestasi WHERE id = '$id'")[0];
-        $cek = mysqli_query($conn, "DELETE FROM data_mahasiswa_prestasi WHERE id = '$id'");
+        $data_user = getData("SELECT * FROM user WHERE id = '$id'")[0];
+        $nama_file = $data_user["foto"];
+        if(file_exists("img/profie/$nama_file") && $nama_file != "user.jpg"){
+            unlink("img/profile/$nama_file");
+        }
+        $cek = mysqli_query($conn, "DELETE FROM user WHERE id = '$id'");
         if($cek){
-            $nama_file = $data_prestasi["dokumentasi"];
-            if(file_exists("img/bukti_prestasi/$nama_file")){
-                unlink("img/bukti_prestasi/$nama_file");
-            }
-            setFlash("Dihapus", "True", "Prestasi");
-            echo '<script>window.location="Admin/data_prestasi.php";</script>';
+            setFlash("Dihapus", "True", "Mentor");
+            echo '<script>window.location="dashboard/jadwal_admin.php";</script>';
         }else{
-            setFlash("Dihapus", "False", "Prestasi");
+            setFlash("Dihapus", "False", "Mentor");
+            echo '<script>window.location="dashboard/jadwal_admin.php";</script>';
+        }
+    }
+    else if($_GET["aksi"] === "hapusJadwal"){
+        $id = $_GET["id"];
+        $cek = mysqli_query($conn, "DELETE FROM jadwal WHERE id = '$id'");
+        if($cek){
+            setFlash("Dihapus", "True", "Jadwal");
+            echo '<script>window.location="dashboard/jadwal_admin.php";</script>';
+        }else{
+            setFlash("Dihapus", "False", "Jadwal");
+            echo '<script>window.location="dashboard/jadwal_admin.php";</script>';
+        }
+    }
+    else if($_GET["aksi"] === "hapusBidang"){
+        $id = $_GET["id"];
+        $cek = mysqli_query($conn, "DELETE FROM bidang_studi WHERE id = '$id'");
+        if($cek){
+            setFlash("Dihapus", "True", "Bidang_Studi");
+            echo '<script>window.location="dashboard/daftar_bidang.php";</script>';
+        }else{
+            setFlash("Dihapus", "False", "Bidang_Studi");
+            echo '<script>window.location="dashboard/daftar_bidang.php";</script>';
         }
     }
 }

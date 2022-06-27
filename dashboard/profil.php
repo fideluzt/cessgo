@@ -69,7 +69,7 @@ if(isset($_POST["btn-simpan"])){
                 <div class="card-body">
                   <h5 class="card-title"><b><?= $data_user["nama"]; ?></b></h5>
                   <p class="card-text">
-                    Email : <?= $data_user["email"]; ?>
+                    Email : <?= $data_user["email"]; ?> <br>
                     Kelas : <?= $data_user["kelas"]; ?>
                   </p>
                   <a href="profil.php?editProfil" class="btn btn-primary">Edit</a>

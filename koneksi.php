@@ -185,21 +185,47 @@ function changePassword($data){
         mysqli_query($conn, "INSERT INTO user VALUES('', '$npm_mentor', '$nama_mentor', '$email_mentor', '$password', '$kelas', 'mentor', 'user.jpg')");
         return mysqli_affected_rows($conn);
     }
+
+    // Tambah Jadwal 
+        function tambahJadwal($data){
+            global $conn;
+            $hari = $data["hari"];
+            $ruang = $data["ruang"];
+            $kelas = $data["kelas"];
+            $jam = $data["jam"];
+            $mentor = $data["mentor"];
+            mysqli_query($conn, "INSERT INTO jadwal VALUES('', '$hari', '$ruang', '$kelas', '$jam', '$mentor')");
+            return mysqli_affected_rows($conn);
+        }
+    // Update Jadwal 
+        function updateJadwal($data){
+            global $conn;
+            $id_jadwal = $data["id_jadwal"];
+            $hari = $data["hari"];
+            $ruang = $data["ruang"];
+            $kelas = $data["kelas"];
+            $jam = $data["jam"];
+            $mentor = $data["mentor"];
+            mysqli_query($conn, "UPDATE jadwal SET hari = '$hari', ruang = '$ruang', kelas = '$kelas', waktu = '$jam', mentor = '$mentor' WHERE id = '$id_jadwal'");
+            return mysqli_affected_rows($conn);
+        }
     
-    // Proses Halaman Jadwal Admin
+    // Proses Halaman Daftar Bidang
     // Tambah Bidang Studi 
         function tambahBidangStudi($data){
             global $conn;
             $nama_bidang = $data["nama_bidang"];
             $deskripsi_bidang = $data["deskripsi_bidang"];
             $kuota = $data["kuota"];
+            $mentor = $data["mentor"];
             $foto = uploadGambar("../img/bidang_studi/");
-            mysqli_query($conn, "INSERT INTO bidang_studi VALUES('', '$nama_bidang', '$deskripsi_bidang', '$kuota', '-', '$foto')");
+            mysqli_query($conn, "INSERT INTO bidang_studi VALUES('', '$nama_bidang', '$deskripsi_bidang', '$kuota', '$mentor', '$foto')");
             return mysqli_affected_rows($conn);
         }
     // Update Bidang Studi
         function updateBidangStudi($data){
             global $conn;
+            $id = $data["id"];
             $nama_bidang = $data["nama_bidang"];
             $deskripsi_bidang = $data["deskripsi_bidang"];
             $kuota = $data["kuota"];
@@ -213,7 +239,19 @@ function changePassword($data){
                  }
                 $foto = uploadGambar("../img/bidang_studi/");
             }
-            mysqli_query($conn, "UPDATE bidang_studi SET nama_bidang = '$nama_bidang', deskripsi = '$deskripsi_bidang', kuota = '$kuota', mentor = '$mentor', '$foto'");
+            mysqli_query($conn, "UPDATE bidang_studi SET nama_bidang = '$nama_bidang', deskripsi = '$deskripsi_bidang', kuota = '$kuota', mentor = '$mentor', foto = '$foto' WHERE id = '$id'");
+            return mysqli_affected_rows($conn);
+        }
+
+         // Kirim Testimoni 
+        function kirimTestimoni($data){
+            global $conn;
+            $testimoni = $data["testimoni"];
+            $nama = $data["nama"];
+            $npm = $data["npm"];
+            $title = $data["title"];
+            $foto = uploadGambar("../img/testimoni/");
+            mysqli_query($conn, "INSERT INTO testimoni VALUES('$npm', '$nama', '$title', '$testimoni', '$foto', '3')");
             return mysqli_affected_rows($conn);
         }
     

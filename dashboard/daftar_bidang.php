@@ -3,14 +3,15 @@
  ?>
 <?php include '../template/admin/sidebar.php';
 $daftar_bidang = getData("SELECT * FROM bidang_studi");
+$data_mentor = getData("SELECT * FROM user WHERE level = 'mentor'");
 
 // Tambah Bidang Studi
 if(isset($_POST["btn_tambah"])){
   if(tambahBidangStudi($_POST) > 0){
-      setFlash("Ditambahkan", "True", "Bidang Studi");
+      setFlash("Ditambahkan", "True", "Bidang_Studi");
       echo '<script>window.location="daftar_bidang.php";</script>';
     }else{
-    setFlash("Ditambahkan", "False", "Bidang Studi");
+    setFlash("Ditambahkan", "False", "Bidang_Studi");
     echo '<script>window.location="daftar_bidang.php";</script>';
   }
 }
@@ -18,11 +19,13 @@ if(isset($_POST["btn_tambah"])){
 
 // Edit Bidang Studi
 if(isset($_POST["btn_update"])){
+  // var_dump($_POST);
+  // die();
   if(updateBidangStudi($_POST) > 0){
-      setFlash("Diupdate", "True", "Bidang Studi");
+      setFlash("Diupdate", "True", "Bidang_Studi");
       echo '<script>window.location="daftar_bidang.php";</script>';
     }else{
-    setFlash("Diupdate", "False", "Bidang Studi");
+    setFlash("Diupdate", "False", "Bidang_Studi");
     echo '<script>window.location="daftar_bidang.php";</script>';
   }
 }
@@ -86,30 +89,37 @@ if(isset($_POST["btn_update"])){
                                     <div class="modal-body">
                                       <div class="mb-3">
                                         <label for="nama_bidang" class="form-label">Nama Bidang</label>
+                                        <input type="hidden"  name="id" value="<?= $bidang["id"]; ?>">
                                         <input type="text" class="form-control" placeholder="Masukan Nama Bidang..." name="nama_bidang" id="nama_bidang" value="<?= $bidang["nama_bidang"]; ?>" aria-describedby="emailHelp" required>
                                       </div>
                                       <div class="mb-3">
                                         <label for="deskripsi_bidang" class="form-label">Deskripsi Bidang</label>
                                       <textarea name="deskripsi_bidang" placeholder="Masukan Deskripsi Bidang..." id="deskripsi" class="form-control" cols="10" rows="5"><?= $bidang["deskripsi"]; ?></textarea>
                                       </div>
-                                      <!-- <div class="mb-3">
-                                        <label for="nama_mentor" class="form-label">Nama Mentor</label>
-                                        <input type="text" class="form-control" name="nama_mentor" id="nama_mentor" aria-describedby="emailHelp" required>
-                                      </div> -->
+                                      <div class="mb-3">
+                                            <label for="mentor" class="form-label">Mentor</label>
+                                            <select class="form-select" id="mentor"  name="mentor" aria-label="Default select example" required>
+                                            <option value="-">--Pilih Mentor--</option>
+                                              <?php 
+                                                foreach($data_mentor as $mentor) : ?>
+                                                      <option <?= $mentor["nama"] == $bidang["mentor"] ? "selected" : "" ?> value="<?= $mentor["nama"]; ?>"><?= $mentor["nama"]; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                          </div>
                                       <div class="mb-3">
                                         <label for="kuota" class="form-label">Kuota Kelas</label>
                                         <input type="number" class="form-control" value="<?= $bidang["kuota"]; ?>" placeholder="Masukan Jumlah Kuota Kelas..." name="kuota" id="kuota" aria-describedby="emailHelp" required>
                                       </div>
                                       <div class="mb-3">
                                         <label for="foto" class="form-label">Foto</label>
-                                        <input type="file" class="form-control" name="gambar" id="foto" aria-describedby="emailHelp" required>
+                                        <input type="file" class="form-control" name="gambar" id="foto" aria-describedby="emailHelp">
                                         <input type="hidden" class="form-control" value="<?= $bidang["foto"]; ?>" name="gambar_lama" >
                                       </div>
 
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                                      <button type="submit" name="btn_tambah" class="btn btn-primary">Tambah</button>
+                                      <button type="submit" name="btn_update" class="btn btn-primary">Update</button>
                                     </div>
                                   </div>
                               </form>
@@ -119,7 +129,7 @@ if(isset($_POST["btn_update"])){
 
 
 
-                            <a href="../proses_hapus.php?aksi=hapusPrestasi&id=<?= $bidang["id"]; ?>"  class="badge badge-danger tombolKonfirmasi" data-konfirmasi="Bidang Studi <?= $bidang["nama_bidang"]; ?> "><i class="fa-solid fa-trash"></i></a>
+                            <a href="../proses_hapus.php?aksi=hapusBidang&id=<?= $bidang["id"]; ?>"  class="badge badge-danger tombolKonfirmasi" data-konfirmasi="Bidang Studi <?= $bidang["nama_bidang"]; ?> "><i class="fa-solid fa-trash"></i></a>
                         </td>
                       </tr>
                     <?php endforeach; ?>
@@ -164,6 +174,16 @@ if(isset($_POST["btn_update"])){
             <input type="number" class="form-control" placeholder="Masukan Jumlah Kuota Kelas..." name="kuota" id="kuota" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
+            <label for="mentor" class="form-label">Mentor</label>
+            <select class="form-select" id="mentor"  name="mentor" aria-label="Default select example" required>
+              <option value="-">--Pilih Mentor--</option>
+                <?php 
+                  foreach($data_mentor as $mentor) : ?>
+                    <option value="<?= $mentor["nama"]; ?>"><?= $mentor["nama"]; ?></option>
+                <?php endforeach; ?>
+            </select>
+          </div>
+          <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
             <input type="file" class="form-control" name="gambar" id="foto" aria-describedby="emailHelp" required>
           </div>
@@ -171,7 +191,7 @@ if(isset($_POST["btn_update"])){
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" name="btn_update" class="btn btn-primary">Update</button>
+          <button type="submit" name="btn_tambah" class="btn btn-primary">Tambah</button>
         </div>
       </div>
   </form>

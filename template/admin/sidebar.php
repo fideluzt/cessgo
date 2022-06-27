@@ -44,6 +44,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item menu-open">
+            <a href="kirim_testimoni.php" class="nav-link mt-2 <?= ($link=='kirim_testimoni.php') ? 'active' : ''?>">
+          <i class="nav-icon fa-solid fa-bell"></i>
+              <p>
+               Testimoni
+              </p>
+            </a>
+          </li>
           <?php endif; ?>
           <?php if($_SESSION["level"] == 'mentor') : ?>
             <li class="nav-item menu-open">
