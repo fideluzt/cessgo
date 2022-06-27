@@ -50,6 +50,28 @@ if(isset($_GET["aksi"])){
             echo '<script>window.location="dashboard/daftar_bidang.php";</script>';
         }
     }
+    else if($_GET["aksi"] === "publish"){
+        $npm = $_GET["npm"];
+        $cek = mysqli_query($conn, "UPDATE testimoni SET ket = '1' WHERE npm = '$npm'");
+        if($cek){
+            setFlash("Dipublish", "True", "Testimoni");
+            echo '<script>window.location="dashboard/data_testimoni.php";</script>';
+        }else{
+            setFlash("Dipublish", "False", "Testimoni");
+            echo '<script>window.location="dashboard/data_testimoni.php";</script>';
+        }
+    }
+    else if($_GET["aksi"] === "tolak"){
+        $npm = $_GET["npm"];
+        $cek = mysqli_query($conn, "UPDATE testimoni SET ket = '2' WHERE npm = '$npm'");
+        if($cek){
+            setFlash("Ditolak", "True", "Testimoni");
+            echo '<script>window.location="dashboard/data_testimoni.php";</script>';
+        }else{
+            setFlash("Ditolak", "False", "Testimoni");
+            echo '<script>window.location="dashboard/data_testimoni.php";</script>';
+        }
+    }
 }
 
 ?>

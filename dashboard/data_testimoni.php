@@ -30,7 +30,7 @@ $data_testimoni = getData("SELECT * FROM testimoni");
                       <th>No</th>
                       <th>NPM</th>
                       <th>Nama</th>
-                      <th>Kelas</th>
+                      <th>Title</th>
                       <th>Testimoni</th>
                       <th>Foto</th>
                       <th>Aksi</th>
@@ -44,14 +44,20 @@ $data_testimoni = getData("SELECT * FROM testimoni");
                         <td><?= $no++; ?></td>
                         <td><?= $testimoni["npm"]; ?></td>
                         <td><?= $testimoni["nama"]; ?></td>
-                        <td><?= $testimoni["ket"]; ?></td>
+                        <td><?= $testimoni["title"]; ?></td>
                         <td><?= $testimoni["testimoni"]; ?></td>
                         <td>
                           <a href="../img/testimoni/<?= $testimoni["foto"]; ?>" class="badge badge-info">Lihat</a>
                         </td>
                         <td>
-                            <a href="#" class="badge badge-info" data-bs-toggle="modal" data-bs-target="#jadwalKelas<?= $jadwal["id"]; ?>">Publish</a>
-                            <a href="../proses_hapus.php?aksi=hapusPrestasi&id=<?= $jadwal["id"]; ?>"  class="badge badge-danger tombolKonfirmasi" data-konfirmasi="Jadwal Kelas <?= $jadwal["kelas"]; ?> ">Hapus</a>
+                          <?php if($testimoni["ket"] == 1): ?>
+                            <span class="badge badge-success">Berhasil Di Publish</span>
+                            <?php elseif($testimoni["ket"] == 2): ?>
+                              <span class="badge badge-danger">Ditolak</span>
+                              <?php else: ?>
+                                <a href="../proses_hapus.php?aksi=publish&npm=<?= $testimoni["npm"]; ?>" class="badge badge-success" data-bs-toggle="modal">Publish</a>
+                                <a href="../proses_hapus.php?aksi=tolak&npm=<?= $testimoni["npm"]; ?>"  class="badge badge-danger tombolKonfirmasi" data-konfirmasi="Data Testimoni <?= $testimoni["nama"]; ?> ">Tolak</a>
+                          <?php endif; ?>
                         </td>
                       </tr>
                     <?php endforeach; ?>
