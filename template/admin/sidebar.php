@@ -63,7 +63,7 @@
               </a>
             </li>
             <li class="nav-item menu-open">
-              <a href="jadwal_mhs.php" class="nav-link mt-2 <?= ($link=='jadwal_mhs.php') ? 'active' : ''?>">
+              <a href="absensi_mhs.php" class="nav-link mt-2 <?= ($link=='absensi_mhs.php') ? 'active' : ''?>">
              <i class="nav-icon fa-solid fa-calendar-days"></i>
                 <p>
                   Absensi

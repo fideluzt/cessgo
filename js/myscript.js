@@ -1,7 +1,6 @@
 $(function () {
   // Pesan Hapus dan Update
   var data = $("#data-flash").data("flash");
-  var data = data.split(" ");
   let info = $("#data-info").data("info");
 
   if (info) {
@@ -12,12 +11,17 @@ $(function () {
     });
   } else {
     if (data) {
-      if (data[1] === "True") {
-        Swal.fire({
-          title: "Data " + data[2],
-          text: "Berhasil " + data[0],
-          icon: "success",
-        });
+      var data = data.split(" ");
+      if (data[1] == "True") {
+        if (data[2] == "Pesan") {
+          Swal.fire("Terima kasih pesan anda sudah berhasil dikirimkan");
+        } else {
+          Swal.fire({
+            title: "Data " + data[2],
+            text: "Berhasil " + data[0],
+            icon: "success",
+          });
+        }
       } else {
         Swal.fire({
           title: "Data " + data[2],
@@ -29,7 +33,7 @@ $(function () {
   }
 });
 
-$(".konfirmasiLogout").on("click", function(){
+$(".konfirmasiLogout").on("click", function () {
   e.preventDefault();
   Swal.fire({
     title: "Apakah Anda Yakin?",
@@ -44,7 +48,7 @@ $(".konfirmasiLogout").on("click", function(){
       document.location.href = $(this).attr("href");
     }
   });
-})
+});
 
 //   Pesan Konfirmasi Semua
 $(".tombolKonfirmasi").on("click", function (e) {
@@ -109,7 +113,4 @@ $(".tombolKonfirmasiTenant").on("click", function (e) {
       });
     }
   });
-
-  
-  
 });

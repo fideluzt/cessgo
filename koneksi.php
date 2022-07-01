@@ -219,10 +219,11 @@ function changePassword($data){
             $kuota = $data["kuota"];
             $mentor = $data["mentor"];
             $foto = uploadGambar("../img/bidang_studi/");
-            mysqli_query($conn, "INSERT INTO bidang_studi VALUES('', '$nama_bidang', '$deskripsi_bidang', '$kuota', '$mentor', '$foto')");
+            $video = $data["video"];
+            mysqli_query($conn, "INSERT INTO bidang_studi VALUES('', '$nama_bidang', '$deskripsi_bidang', '$kuota', '$mentor', '$foto', '$video')");
             return mysqli_affected_rows($conn);
         }
-    // Update Bidang Studi
+        // Update Bidang Studi
         function updateBidangStudi($data){
             global $conn;
             $id = $data["id"];
@@ -230,6 +231,7 @@ function changePassword($data){
             $deskripsi_bidang = $data["deskripsi_bidang"];
             $kuota = $data["kuota"];
             $mentor = $data["mentor"];
+            $video = $data["video"];
             $fotoLama = $data["gambar_lama"];
             if($_FILES["gambar"]["error"] === 4){
                 $foto = $fotoLama;
@@ -239,7 +241,7 @@ function changePassword($data){
                  }
                 $foto = uploadGambar("../img/bidang_studi/");
             }
-            mysqli_query($conn, "UPDATE bidang_studi SET nama_bidang = '$nama_bidang', deskripsi = '$deskripsi_bidang', kuota = '$kuota', mentor = '$mentor', foto = '$foto' WHERE id = '$id'");
+            mysqli_query($conn, "UPDATE bidang_studi SET nama_bidang = '$nama_bidang', deskripsi = '$deskripsi_bidang', kuota = '$kuota', mentor = '$mentor', foto = '$foto', video = '$video' WHERE id = '$id'");
             return mysqli_affected_rows($conn);
         }
 

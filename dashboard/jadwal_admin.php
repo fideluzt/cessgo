@@ -6,6 +6,7 @@ $jadwal_kelas = getData("SELECT * FROM jadwal");
 $data_mentor = getData("SELECT * FROM user WHERE level = 'mentor'");
 $bidang_studi = getData("SELECT * FROM bidang_studi");
 
+
 // Tambah Mentor
 if(isset($_POST["btn_tambah"])){
   if(tambahMentor($_POST) > 0){
@@ -85,6 +86,7 @@ if(isset($_POST["btn_update_jadwal"])){
                       <th>Kelas</th>
                       <th>Jam</th>
                       <th>Mentor</th>
+                      <th>Jumlah Peserta</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -99,6 +101,10 @@ if(isset($_POST["btn_update_jadwal"])){
                         <td><?= $jadwal["kelas"]; ?></td>
                         <td><?= $jadwal["waktu"]; ?> WIB</td>
                         <td><?= $jadwal["mentor"] === '' ? "-" : $jadwal["mentor"]; ?></td>
+                        <td>
+                          <?php $kelas = $jadwal["kelas"]; ?>
+                           <?= count(getData("SELECT * FROM user WHERE kelas = '$kelas'")); ?> Orang
+                        </td>
                         <td>
                             <a href="#" class="badge badge-info" data-bs-toggle="modal" data-bs-target="#jadwalKelas<?= $jadwal["id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
 

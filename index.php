@@ -1,6 +1,9 @@
 <?php 
-session_start();
-require 'koneksi.php';
+require 'template/head.php';
+// setFlash("Dikirimkan", "Email", "Pesan");       
+
+//  setFlash("Dikirimkan", "True", "Pesan");      
+ 
 function kirimEmail($namaPenerima, $emailPenerima, $pesan){
     $url = "https://fimail.vercel.app/send";
     $curl = curl_init($url);
@@ -21,7 +24,7 @@ function kirimEmail($namaPenerima, $emailPenerima, $pesan){
         },
         "to": {
             "name": "Admin Cessgo",
-            "address": "anissa.fidelia@gmail.com"
+            "address": "bopanaip@gmail.com"
         },
         "subject": "Pesan Kontak - WEB CESSGO",
         "contents": "$pesan"
@@ -44,13 +47,11 @@ if(isset($_POST["submit-message"])){
     $email = $_POST["email"];
     $pesan = $_POST["message"];
     if(kirimEmail($nama, $email, $pesan)){
-        echo "<script>
-            alert('Pesan Anda berhasil di Kirim!!!');
-        </script>";
+        setFlash("Dikirimkan", "True", "Pesan");       
     }
 }
+// setFlash("Dikirimkan", "True", "Pesan");       
 ?>
-<?php require 'template/head.php'; ?>
 </div>	<div class="jumbotron d-flex align-items-center">
   <div class="container text-center">
     <h1 class="display-1 mb-4">CESSGO</h1><br><h3>Computer Engineering Student Study Group</h3>
@@ -91,6 +92,8 @@ if(isset($_POST["submit-message"])){
                 <div class="col-md-10 offset-md-1 features-holder">
                     <div class="row">
                         <!-- Features Item -->
+                        <!-- Set Flash -->
+                        <?= flash(); ?>
                         <div class="col-md-4 col-sm-12 text-center mt-4">
                             <div class="shadow rounded feature-item p-4 mb-4" data-aos="fade-up">
                                 <div class="my-4">
@@ -405,6 +408,7 @@ if(isset($_POST["submit-message"])){
                     </div>
                     <form method="post" name="contact-us" action="">
                         <div class="row">
+                            
                             <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                             </div>

@@ -1,14 +1,16 @@
-<?php include '../template/admin/head.php';
+<?php 
+// if(!session_start()) session_id();
+include '../template/admin/head.php';
 
  ?>
 <?php include '../template/admin/sidebar.php';
 $daftar_bidang = getData("SELECT * FROM bidang_studi");
 $data_mentor = getData("SELECT * FROM user WHERE level = 'mentor'");
 
+setFlash("Ditambahkan", "True", "Bidang_Studi");
 // Tambah Bidang Studi
 if(isset($_POST["btn_tambah"])){
   if(tambahBidangStudi($_POST) > 0){
-      setFlash("Ditambahkan", "True", "Bidang_Studi");
       echo '<script>window.location="daftar_bidang.php";</script>';
     }else{
     setFlash("Ditambahkan", "False", "Bidang_Studi");
@@ -115,6 +117,10 @@ if(isset($_POST["btn_update"])){
                                         <input type="file" class="form-control" name="gambar" id="foto" aria-describedby="emailHelp">
                                         <input type="hidden" class="form-control" value="<?= $bidang["foto"]; ?>" name="gambar_lama" >
                                       </div>
+                                      <div class="mb-3">
+                                        <label for="video" class="form-label">Video</label>
+                                        <input type="text" placeholder="Masukan Nama Video" class="form-control" value="<?= $bidang["video"]; ?>" name="video" id="video" >
+                                      </div>
 
                                     </div>
                                     <div class="modal-footer">
@@ -186,6 +192,10 @@ if(isset($_POST["btn_update"])){
           <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
             <input type="file" class="form-control" name="gambar" id="foto" aria-describedby="emailHelp" required>
+          </div>
+          <div class="mb-3">
+            <label for="video" class="form-label">Video</label>
+            <input type="text" class="form-control" placeholder="Masukan Nama Video..." name="video" id="video" aria-describedby="emailHelp" required>
           </div>
 
         </div>

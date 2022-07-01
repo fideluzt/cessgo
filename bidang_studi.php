@@ -1,5 +1,5 @@
 <?php 
-require 'koneksi.php';
+require 'template/head.php'; 
 // $deskripsi = "Merupakan Jenis Bidang Yang sangat banyak diminati oleh mahasiswa dan tidak hanya itu bidang ini juga murah serta mudah untuk dipelajari ya guys ya.";
 // $mentor = "Irpan dan Amal";
 // $bidang = ["Fotografi", "Web Design", "Robot", "Design Grafis", "Database", "Audio Visual"];
@@ -13,8 +13,9 @@ require 'koneksi.php';
 $bidang_studi = getData("SELECT * FROM bidang_studi");
 
 
-require 'template/head.php'; ?>
-	
+?>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </div>	<div class="jumbotron jumbotron-single d-flex align-items-center" style="background-image: url(img/bg2.jpg)">
   <div class="container text-center">
     <h1 class="display-2 mb-4">Bidang Studi</h1>
@@ -31,9 +32,11 @@ require 'template/head.php'; ?>
                 <?php foreach($bidang_studi as $studi) : ?>
                     <div class="col-md-6" data-aos="fade-up">
                     <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row no-gutters">
+                        <div class="row no-gutters d-flex align-items-center">
                             <div class="col-md-4">
-                            <img src="img/bidang_studi/<?= $studi["foto"]; ?>" width="100%" height="100%" alt="Bidang Studi">
+                            <img src="img/bidang_studi/<?= $studi["foto"]; ?>" width="100%" class="img-<?= $studi["id"]; ?>" data-id="<?= $studi["id"]; ?>" height="100%" alt="Bidang Studi">
+                            
+                          
                             </div>
                             <div class="col-md-8">
                             <div class="card-body">
@@ -43,7 +46,35 @@ require 'template/head.php'; ?>
                                 <h6><b>Mentor : </b> <?= $studi["mentor"]; ?></h6>
                                 </p>
                                 <p class="card-text"><small class="text-muted">Sisa Kuota : <b><?= $studi["kuota"]; ?> Orang</b> </small></p>
-                                <a href="daftar.php?bidang=<?= $studi["nama_bidang"]; ?>" class="badge badge-primary">Daftar</a>
+                                <a href="daftar.php?bidang=<?= $studi["nama_bidang"]; ?>" style="text-decoration:none;" class="badge badge-primary">Daftar</a>
+                                <!-- Button trigger modal -->
+                                <button type="button" style="height: 20px; line-height:5px;"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#video-<?= $studi["id"]; ?>">
+                                Video
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="video-<?= $studi["id"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Video <?= $studi["nama_bidang"]; ?></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="col">
+                                                <video id="video" width="100%" height="30%" autoplay loop controls>
+                                                <source src="video/<?= $studi["video"]; ?>" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                             </div>
                         </div>
@@ -96,3 +127,4 @@ require 'template/head.php'; ?>
 </section>
 <!-- End of Features Section--></div>
 <?php require 'template/footer.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

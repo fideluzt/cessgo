@@ -83,7 +83,6 @@ $(function () {
 
   // Pesan Hapus dan Update
   var data = $("#data-flash").data("flash");
-  var data = data.split(" ");
   let info = $("#data-info").data("info");
   if (info) {
     Swal.fire({
@@ -93,6 +92,7 @@ $(function () {
     });
   } else {
     if (data) {
+      var data = data.split(" ");
       if (data[1] === "True") {
         Swal.fire({
           title: "Data " + data[2],
@@ -108,4 +108,25 @@ $(function () {
       }
     }
   }
+
+  //   $('.video').on('click', function(){
+  //     $
+  //     console.log()
+  //   })
+  $(".hadir").on("click", function () {
+    Swal.fire({
+      title: "Absensi Kehadiran",
+      text: "Berhasil Absensi",
+      icon: "success",
+    });
+    $(".tidak").addClass("d-none");
+  });
+  $(".tidak").on("click", function () {
+    Swal.fire({
+      title: "Absensi Kehadiran",
+      text: "Berhasil Absensi",
+      icon: "success",
+    });
+    $(".hadir").addClass("d-none");
+  });
 });

@@ -24,7 +24,7 @@ if($login){
         // cek jika user login sebagai operator
         else if($login['level']=="mentor"){
             // alihkan ke halaman dashboard operator
-            header("Location: dashboard/admin.php");
+            header("Location: dashboard/profil.php");
             // cek jika user login sebagai direktur
         }else if($login['level']=="mahasiswa"){
             // alihkan ke halaman dashboard direktur

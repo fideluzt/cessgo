@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2022 at 03:08 PM
+-- Generation Time: Jul 01, 2022 at 10:13 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `absensi`
+--
+
+CREATE TABLE `absensi` (
+  `npm` varchar(20) NOT NULL,
+  `kelas` varchar(128) NOT NULL,
+  `ket` enum('hadir','tidak hadir','','') NOT NULL,
+  `tgl` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `bidang_studi`
 --
 
@@ -32,21 +45,19 @@ CREATE TABLE `bidang_studi` (
   `nama_bidang` varchar(128) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
   `kuota` int(11) NOT NULL,
-  `mentor` varchar(128) NOT NULL,
-  `foto` varchar(128) NOT NULL
+  `mentor` varchar(128) NOT NULL DEFAULT '-',
+  `foto` varchar(128) NOT NULL,
+  `video` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bidang_studi`
 --
 
-INSERT INTO `bidang_studi` (`id`, `nama_bidang`, `deskripsi`, `kuota`, `mentor`, `foto`) VALUES
-(8, 'Fotografi', 'Merupakan Jenis Bidang Yang sangat banyak diminati oleh mahasiswa dan tidak hanya itu bidang ini juga murah serta mudah untuk dipelajari ya guys ya.', 50, 'Irpan dan Amal', 'Fotografi.jpg'),
-(9, 'Web Design', 'Merupakan Jenis Bidang Yang sangat banyak diminati oleh mahasiswa dan tidak hanya itu bidang ini juga murah serta mudah untuk dipelajari ya guys ya.', 45, 'Irpan dan Amal', 'Web Design.jpg'),
-(10, 'Robot', 'Merupakan Jenis Bidang Yang sangat banyak diminati oleh mahasiswa dan tidak hanya itu bidang ini juga murah serta mudah untuk dipelajari ya guys ya.', 40, 'Irpan dan Amal', 'Robot.jpg'),
-(11, 'Design Grafis', 'Merupakan Jenis Bidang Yang sangat banyak diminati oleh mahasiswa dan tidak hanya itu bidang ini juga murah serta mudah untuk dipelajari ya guys ya.', 35, 'Irpan dan Amal', 'Design Grafis.jpg'),
-(12, 'Database', 'Merupakan Jenis Bidang Yang sangat banyak diminati oleh mahasiswa dan tidak hanya itu bidang ini juga murah serta mudah untuk dipelajari ya guys ya.', 30, 'Irpan dan Amal', 'Database.jpg'),
-(13, 'Audio Visual', 'Merupakan Jenis Bidang Yang sangat banyak diminati oleh mahasiswa dan tidak hanya itu bidang ini juga murah serta mudah untuk dipelajari ya guys ya.', 25, 'Irpan dan Amal', 'Audio Visual.jpg');
+INSERT INTO `bidang_studi` (`id`, `nama_bidang`, `deskripsi`, `kuota`, `mentor`, `foto`, `video`) VALUES
+(16, 'Web Junior 2', 'Merupakan bidang yang paling ditakuti dan disegani', 25, 'Irpansyah', '62b90b247355d.jpg', 'web_junior12.mp4'),
+(17, 'Web Junior 1', 'Beajar HTML, CSS, dan Javascript', 20, 'Irpansyah', '62b90b60dd5fe.jpg', 'web_junior12.mp4'),
+(18, 'Design Grafis', 'merupakan bidang yang sangat banyak juga diminati', 25, 'Irpansyah', '62bea21fa19f5.png', 'design-grafis.mp4');
 
 -- --------------------------------------------------------
 
@@ -68,12 +79,29 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id`, `hari`, `ruang`, `kelas`, `waktu`, `mentor`) VALUES
-(1, 'Senin', 'Ruang 1', 'Photograpy', '13.00 WIB', ''),
-(2, 'Selasa', 'Ruang 2', 'Web Developer', '09.00 WIB', ''),
-(3, 'Rabu', 'Ruang 3', 'Robot', '10.00 WIB', ''),
-(4, 'Kamis', 'Ruang 4', 'Design Grafis', '14.00 WIB', ''),
-(5, 'Jumat', 'Ruang 5', 'Database', '14.00 WIB', ''),
-(6, 'Sabtu', 'Ruang 6', 'Audio Visual', '09.00 WIB', '');
+(8, 'Sabtu', 'Ruang 1', 'Web Junior 2', '13:56', 'Irpansyah');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testimoni`
+--
+
+CREATE TABLE `testimoni` (
+  `npm` varchar(20) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `testimoni` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `ket` int(3) NOT NULL DEFAULT 3 COMMENT '1 = Diterima, 2 = Ditolak 3 = Diproses'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `testimoni`
+--
+
+INSERT INTO `testimoni` (`npm`, `nama`, `title`, `testimoni`, `foto`, `ket`) VALUES
+('062140720451', 'Baim', 'Peserta Web Junior 2', 'asd', '62b91c3d9ea0c.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -98,11 +126,18 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `nama`, `email`, `password`, `kelas`, `level`, `foto`) VALUES
 (1, 'admin', 'Fidel', 'fidel@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'user.jpg'),
-(33, '062140720450', 'Irpansyah', 'irpansyah@gmail.com', 'caf1a3dfb505ffed0d024130f58c5cfa', 'Robot', 'mahasiswa', '62b83e856bd05.jpg');
+(40, '062140720450', 'Irpansyah', 'irpansyah810@gmail.com', '202cb962ac59075b964b07152d234b70', 'Web Junior 1', 'mentor', 'user.jpg'),
+(41, '062140720451', 'Baim', 'Baim@gmail.com', '202cb962ac59075b964b07152d234b70', 'Web Junior 2', 'mahasiswa', 'user.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `absensi`
+--
+ALTER TABLE `absensi`
+  ADD PRIMARY KEY (`npm`);
 
 --
 -- Indexes for table `bidang_studi`
@@ -115,6 +150,12 @@ ALTER TABLE `bidang_studi`
 --
 ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `testimoni`
+--
+ALTER TABLE `testimoni`
+  ADD PRIMARY KEY (`npm`);
 
 --
 -- Indexes for table `user`
@@ -130,19 +171,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bidang_studi`
 --
 ALTER TABLE `bidang_studi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

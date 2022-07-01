@@ -1,4 +1,6 @@
 <?php 
+// session_start();
+require 'koneksi.php';
 $url = $_SERVER['REQUEST_URI'];
 $url = explode("/cessgo/",$url)[1];
 
@@ -70,6 +72,8 @@ switch ($request_uri) {
 <body data-spy="scroll" data-target="#navbar" class="static-layout">
 	<nav id="header-navbar" class="navbar navbar-expand-lg py-4">
     <div class="container">
+        <!-- Set Flash -->
+        <?=  flash(); ?>
         <a class="navbar-brand d-flex align-items-center text-white " href="index.php">
             <h2 class="font-weight-bolder mb-0">CESSGO</h2>
         </a>

@@ -1,5 +1,5 @@
 <?php
-if(!session_id())session_start();
+session_start();
 include '../koneksi.php';
 $username = $_SESSION["username"];
 $data_user = getData("SELECT * FROM user WHERE username = '$username'");
@@ -55,6 +55,11 @@ switch ($request_uri) {
     $title="Kirim Testimoni | CESSGO";
     $bread = "Kirim Testimoni";
     $link = "kirim_testimoni.php";
+    break;
+  case '/cessgo/dashboard/absensi_mhs.php':
+    $title="Absensi Mahasiswa | CESSGO";
+    $bread = "Absensi Mahasiswa";
+    $link = "absensi_mhs.php";
     break;
   default:
   $title="Dashboard | CESSGO";
@@ -119,8 +124,14 @@ switch ($request_uri) {
       </li>
     </ul>
     <!-- Set Flash -->
-          <?= flash(); ?>
-          <?= info(); ?>
+         <?php
+  if(info()){
+    echo info();
+  } else{
+    echo flash();
+  }
+  
+  ?>
 
   </nav>
   <!-- /.navbar -->

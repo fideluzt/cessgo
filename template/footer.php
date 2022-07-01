@@ -41,6 +41,8 @@
 	<script src="vendor/lightcase/lightcase.js"></script>
 	<script src="vendor/waypoints/waypoint.min.js"></script>
 	 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	 <script src="js/sweetalert2.all.min.js"></script>
+	 <script src="js/myscript.js"></script>
 	 
 	<!-- Main JS -->
 	<script src="js/app.min.js "></script>
