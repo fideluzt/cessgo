@@ -48,7 +48,8 @@ $data_mahasiswa = getData("SELECT * FROM user WHERE kelas = '$kelas'");
                         <td><?= $mahasiswa["kelas"]; ?></td>
                         <td>
                           <button class="btn btn-success hadir">Hadir</button>
-                          <button class="btn btn-danger tidak">Tidak</button>
+                          <button class="btn btn-warning izin">Izin</button>
+                          <button class="btn btn-danger alfa">Alfa</button>
                         </td>
                       </tr>
                     <?php endforeach; ?>

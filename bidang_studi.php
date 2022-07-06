@@ -1,20 +1,11 @@
 <?php 
-require 'template/head.php'; 
-// $deskripsi = "Merupakan Jenis Bidang Yang sangat banyak diminati oleh mahasiswa dan tidak hanya itu bidang ini juga murah serta mudah untuk dipelajari ya guys ya.";
-// $mentor = "Irpan dan Amal";
-// $bidang = ["Fotografi", "Web Design", "Robot", "Design Grafis", "Database", "Audio Visual"];
-// $kuota = 50;
-// $foto = '';
-// foreach($bidang as $bid){
-//     $foto = "$bid.jpg";
-//     mysqli_query($conn, "INSERT INTO bidang_studi VALUES('', '$bid', '$deskripsi', '$kuota', '$mentor', '$foto')");
-//     $kuota -= 5;
-// }
+require 'template/head.php';
 $bidang_studi = getData("SELECT * FROM bidang_studi");
+$data_mentor = getData("SELECT * FROM user WHERE level = 'mentor'");
 
 
 ?>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 
 </div>	<div class="jumbotron jumbotron-single d-flex align-items-center" style="background-image: url(img/bg2.jpg)">
   <div class="container text-center">
@@ -25,7 +16,7 @@ $bidang_studi = getData("SELECT * FROM bidang_studi");
     <div class="container">
         <div class="section-content">
             <div class="title-wrap mb-3" data-aos="fade-up">
-                <h2 class="section-title">Bidang Studi <b>CESSGO</b></h2>
+                <h2 class="section-title">Bidang Studi <br> <b>CESSGO</b></h2>
             </div>
             
             <div class="row">
@@ -42,13 +33,25 @@ $bidang_studi = getData("SELECT * FROM bidang_studi");
                             <div class="card-body">
                                 <h4 class="card-title"> <b><?= $studi["nama_bidang"]; ?></b> </h4>
                                 <p class="card-text"><?= $studi["deskripsi"]; ?>
+                                   
+                                        <h6><b>Mentor : </b> 
+                                        <?php 
+                                         foreach($data_mentor as $mentor){
+
+                                             if($mentor["kelas"] == $studi["nama_bidang"]){
+                                                 echo $mentor["nama"];
+                                             }
+                                         }
+                                        
+                                        
+                                        ?>
                                     
-                                <h6><b>Mentor : </b> <?= $studi["mentor"]; ?></h6>
+                                    -</h6>
                                 </p>
                                 <p class="card-text"><small class="text-muted">Sisa Kuota : <b><?= $studi["kuota"]; ?> Orang</b> </small></p>
                                 <a href="daftar.php?bidang=<?= $studi["nama_bidang"]; ?>" style="text-decoration:none;" class="badge badge-primary">Daftar</a>
                                 <!-- Button trigger modal -->
-                                <button type="button" style="height: 20px; line-height:5px;"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#video-<?= $studi["id"]; ?>">
+                                <button type="button" style="height: 20px; line-height: 0px;" onclick="videoPlay(<?=$studi['id']?>)"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#video-<?= $studi["id"]; ?>">
                                 Video
                                 </button>
 
@@ -63,7 +66,7 @@ $bidang_studi = getData("SELECT * FROM bidang_studi");
                                     <div class="modal-body">
                                         <div class="container">
                                             <div class="col">
-                                                <video id="video" width="100%" height="30%" autoplay loop controls>
+                                                <video id="video<?=$studi["id"]?>" width="100%" height="30%" loop controls>
                                                 <source src="video/<?= $studi["video"]; ?>" type="video/mp4">
                                                 </video>
                                             </div>
@@ -128,3 +131,9 @@ $bidang_studi = getData("SELECT * FROM bidang_studi");
 <!-- End of Features Section--></div>
 <?php require 'template/footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script>
+    function videoPlay(id){
+        var video = document.getElementById("video"+id);
+        video.play();
+    }
+</script>

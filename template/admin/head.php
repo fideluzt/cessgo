@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 include '../koneksi.php';
 $username = $_SESSION["username"];
 $data_user = getData("SELECT * FROM user WHERE username = '$username'");

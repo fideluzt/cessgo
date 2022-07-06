@@ -8,7 +8,7 @@ if(@$data_testimoni["ket"] == "" || @$data_testimoni["ket"] == 1 || @$data_testi
   $_SESSION["testimoni"] = true;
   // setFlashSistem("Silahkan Menunggu Testimoni Anda akan di proses", "success", "Terimakasih Sudah Mengirim Testimoni");
 }
-if($data_testimoni["ket"] == 3){
+if(@$data_testimoni["ket"] == 3){
   unset($_SESSION["testimoni"]);
 }
 

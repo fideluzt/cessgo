@@ -24,7 +24,7 @@ function kirimEmail($namaPenerima, $emailPenerima, $pesan){
         },
         "to": {
             "name": "Admin Cessgo",
-            "address": "bopanaip@gmail.com"
+            "address": "anissa.fidelia@gmail.com"
         },
         "subject": "Pesan Kontak - WEB CESSGO",
         "contents": "$pesan"
@@ -429,7 +429,7 @@ if(isset($_POST["submit-message"])){
                 <h2 class="mb-4">
                     Hubungi kami
                 </h2>
-                <p class="mb-4">Untuk lebih mengetahui lagi tentang CESSGO<br>harap hubungi kami.</p>
+                <p class="mb-4">Untuk lebih mengetahui lagi tentang CESSGO<br>silahkan hubungi kami.</p>
 
                
             </div>

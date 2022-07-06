@@ -11,9 +11,9 @@
     <div class="container">
         <div class="section-content">
             <div class="title-wrap mb-3" data-aos="fade-up">
-                <h2 class="section-title">Visi dan MISI <b>CESSGO</b></h2>
+                <h2 class="section-title">Visi dan MISI <br> <b> CESSGO</b></h2>
             </div>
-            
+            <br>
             <div class="row">
                 <div class="col-md-6" data-aos="fade-up">
                     <h4><b>Visi :</b></h4>
@@ -24,13 +24,13 @@
                 <div class="col-md-6" data-aos="fade-up">
                     <h4><b>Misi :</b></h4>
                     <p>
-                       <ol>
+                    
                         <li>Menciptakan mahasiswa yang terampil dibidang komputer</li>
                         <li>Menghasilkan produk mahasiswa yang bermental tinggi</li>
-                        <li>Menyiapkan manusia agar lebih siap lagi menghadapi tantangan zaman</li>
+                        <li>Menyiapkan mahasiswa agar lebih siap lagi menghadapi tantangan zaman</li>
                         <li>Melatih mahasiswa agar bisa lebih terampil lagi dibidang komputer</li>
                         <li>Menjalankan program kerja HMJ Teknik Komputer 2022</li>
-                       </ol>
+                    
                     </p>
                 </div>
             </div>

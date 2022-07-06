@@ -103,7 +103,7 @@ if(isset($_POST["btn_update_jadwal"])){
                         <td><?= $jadwal["mentor"] === '' ? "-" : $jadwal["mentor"]; ?></td>
                         <td>
                           <?php $kelas = $jadwal["kelas"]; ?>
-                           <?= count(getData("SELECT * FROM user WHERE kelas = '$kelas'")); ?> Orang
+                           <?= count(getData("SELECT * FROM user WHERE kelas = '$kelas' AND level != 'mentor'")); ?> Orang
                         </td>
                         <td>
                             <a href="#" class="badge badge-info" data-bs-toggle="modal" data-bs-target="#jadwalKelas<?= $jadwal["id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -261,8 +261,8 @@ if(isset($_POST["btn_update_jadwal"])){
             <label for="kelas" class="form-label">Kelas / Bidang Studi</label>
             <select class="form-select" id="kelas" name="kelas" aria-label="Default select example" required>
              <option value="">--Pilih Bidang--</option>
-                 <?php foreach($data_mentor as $mentor) : ?>
-                      <option value="<?= $mentor["nama"] ?>"><?= $mentor["nama"] ?></option>
+                 <?php foreach($bidang_studi as $bidang) : ?>
+                      <option value="<?= $bidang["nama_bidang"]; ?>"><?= $bidang["nama_bidang"]; ?></option>
                 <?php endforeach; ?>
             </select>
           </div>

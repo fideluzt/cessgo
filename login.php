@@ -130,7 +130,7 @@ include 'koneksi.php';
                             
                         </form>
                         
-                       <p class="text-white mt-3">Kembali Ke WEBSITE Klick <a href="index.php" class="">Disini</a> </p> 
+                       <p class="text-white mt-3">Kembali Ke Beranda Klik <a href="index.php" class="">Disini</a> </p> 
                     </div>
                 </div>
             </div>

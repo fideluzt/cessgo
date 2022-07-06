@@ -119,14 +119,25 @@ $(function () {
       text: "Berhasil Absensi",
       icon: "success",
     });
-    $(".tidak").addClass("d-none");
+    $(".izin").addClass("d-none");
+    $(".alfa").addClass("d-none");
   });
-  $(".tidak").on("click", function () {
+  $(".izin").on("click", function () {
     Swal.fire({
       title: "Absensi Kehadiran",
       text: "Berhasil Absensi",
       icon: "success",
     });
     $(".hadir").addClass("d-none");
+    $(".alfa").addClass("d-none");
+  });
+  $(".alfa").on("click", function () {
+    Swal.fire({
+      title: "Absensi Kehadiran",
+      text: "Berhasil Absensi",
+      icon: "success",
+    });
+    $(".hadir").addClass("d-none");
+    $(".izin").addClass("d-none");
   });
 });

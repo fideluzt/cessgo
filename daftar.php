@@ -15,7 +15,7 @@ $result = mysqli_query($conn, "SELECT * FROM user");
     -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Registerasi | CESSGO</title>
+    <title>Registrasi | CESSGO</title>
     <meta name="description" content="Roxy">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -109,10 +109,10 @@ $result = mysqli_query($conn, "SELECT * FROM user");
                     <div class="card-body">
 
 
-                            <h3 class="text-light">Registrasi data</h3>
+                            <h3 class="text-light">Registrasi Data</h3>
 
                             <p>
-                                <small class="text-light"><b>*Username menggunakan NIM</b></small>
+                                <small class="text-light"><b>*Username Menggunakan NIM/NPM</b></small>
                             </p>
                             <hr>
                             <form action="proses tambah data.php" method="post">
@@ -120,19 +120,19 @@ $result = mysqli_query($conn, "SELECT * FROM user");
                             <div class="form-group">
                             
                                 <label class="text-light" id="username" for="username">NIM/NPM </label>
-                                <input type="number" placeholder="Masukan NIM/NPM" required name="username" class="form-control">
+                                <input type="number" placeholder="Masukkan NIM/NPM" required name="username" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="text-light" id="nama" for="name">Nama </label>
-                                <input type="name"  placeholder="Masukan Nama Lengkap" required name="nama" class="form-control">
+                                <input type="name"  placeholder="Masukkan Nama Lengkap" required name="nama" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="text-light" id="email" for="email">Email </label>
-                                <input type="email"  placeholder="Masukan Email" required name="email" class="form-control">
+                                <input type="email"  placeholder="Masukkan Email" required name="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="text-light" id="password" for="password">Password </label>
-                                <input type="password" placeholder="Masukan Password..." required name="password" class="form-control">
+                                <input type="password" placeholder="Masukkan Password..." required name="password" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="text-light"  for="konfirmasi_password">Konfirmasi Password </label>
@@ -152,7 +152,7 @@ $result = mysqli_query($conn, "SELECT * FROM user");
                             <button type="submit" name="submit"  class="btn btn-block btn-yellow">Daftar</button>
                            
                         </form>
-                            <p class="text-white mt-3">Kembali Ke WEBSITE Klick <a href="index.php" class="">Disini</a> </p> 
+                            <p class="text-white mt-3">Kembali Ke Beranda Klik <a href="index.php" class="">Disini</a> </p> 
                     </div>
                 </div>
             </div>

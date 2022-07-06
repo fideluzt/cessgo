@@ -1,11 +1,10 @@
 <?php require 'template/head.php'; ?>
 	
 </div>	
-    <video id="video" width="100%" height="100%" autoplay loop>
+    <video id="video" width="100%" height="100%" autoplay controls loop>
       <source src="testimoni.mp4" type="video/mp4">
     </video>
       <div class="container text-center" >
-    <h1 class="display-2 mb-4">Testimoni</h1>
   </div>
 <!-- <div id="jmb" class=" jumbotron jumbotron-single d-flex align-items-center " style="background-image: url(img/bg2.jpg);">
   <div class="container text-center" >
@@ -41,7 +40,7 @@
                     </div>
                     <div class="testi-item text-center">
                         <i class="testi-icon fa fa-3x fa-quote-left"></i>
-                        <h4 class="testi-text">CESSGO membuat saya betah belajar dengan struktur yang ada<br>saya bisa mengebangkan apa yang ada di dalam diri saya.</h4>
+                        <h4 class="testi-text">CESSGO membuat saya betah belajar dengan struktur yang ada<br>saya bisa mengembangkan apa yang ada di dalam diri saya.</h4>
                         <div class="testi-meta-inner d-flex justify-content-center align-items-center">
                             <div class="testi-img mr-2">
                                 <img src="img/anissa.jpeg" alt="">

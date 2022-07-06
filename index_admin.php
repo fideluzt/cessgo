@@ -497,7 +497,7 @@ session_start();
                 <h2 class="mb-4">
                     Hubungi kami
                 </h2>
-                <p class="mb-4">Untuk lebih mengetahui lagi tentang CESSGO<br>harap hubungi kami.</p>
+                <p class="mb-4">Untuk lebih mengetahui lagi tentang CESSGO<br>silahkan hubungi kami.</p>
 
                
             </div>

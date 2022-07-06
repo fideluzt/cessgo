@@ -1,6 +1,6 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; Anisa Fidelia <b><?= date('Y'); ?></b>
+    <strong>Copyright &copy; Anissa Fidelia <b><?= date('Y'); ?></b>
     <div class="float-right d-none d-sm-inline-block">
       Teknik Komputer <b><?= date('Y'); ?></b> 
     </div>

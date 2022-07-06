@@ -3,7 +3,7 @@ session_start();
 include '../template/admin/head.php' ?>
 <?php include '../template/admin/sidebar.php' ?>
 <?php 
-$data_mahasiswa = getData("SELECT * FROM user WHERE level != 'admin'");
+$data_mahasiswa = getData("SELECT * FROM user WHERE level != 'admin' AND level != 'mentor'");
 ?>
 
    <!-- Main content -->
@@ -42,7 +42,7 @@ $data_mahasiswa = getData("SELECT * FROM user WHERE level != 'admin'");
                         <td><?= $mahasiswa["email"]; ?></td>
                         <td>
                           <!-- <a href="#" class="badge badge-info">Lihat</a> -->
-                          <a href="../proses_hapus.php?aksi=hapusPeserta&npm=<?= $mahasiswa["username"]; ?>" class="badge badge-danger hapusMahasiswa" data-konfirmasi="<?= $mahasiswa["nama"]; ?>">Hapus</a>
+                          <a href="../proses_hapus.php?aksi=hapusPeserta&id=<?= $mahasiswa["id"]; ?>" class="badge badge-danger hapusMahasiswa" data-konfirmasi="<?= $mahasiswa["nama"]; ?>">Hapus</a>
                         </td>
                       </tr>
                     <?php endforeach; ?>
