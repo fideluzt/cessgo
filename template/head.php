@@ -25,6 +25,12 @@ switch ($request_uri) {
   default :
     $title="Home | CESSGO";
 }
+$data_mentor = getData("SELECT * FROM user WHERE level = 'mentor'");
+$data_bidang = getData("SELECT * FROM bidang_studi");
+$testimoni = getData("SELECT * FROM testimoni WHERE ket = '1'");
+
+// var_dump($testimoni);
+// die();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +81,7 @@ switch ($request_uri) {
         <!-- Set Flash -->
         <?=  flash(); ?>
         <a class="navbar-brand d-flex align-items-center text-white " href="index.php">
-            <h2 class="font-weight-bolder mb-0">CESSGO</h2>
+           <img src="img/tekkom.png" width="40" class="mr-2" alt="Logo Tekkom"> <h2 class="font-weight-bolder mb-0">CESSGO</h2>
         </a>
         <a class="navbar-brand d-flex align-items-center <?= $url == "index.php" ? "link-active" : "text-white"; ?>" href="index.php">
             <h5 class="font-weight-bolder mb-0">Home</h5>

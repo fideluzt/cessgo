@@ -1,9 +1,5 @@
 <?php 
 require 'template/head.php';
-// setFlash("Dikirimkan", "Email", "Pesan");       
-
-//  setFlash("Dikirimkan", "True", "Pesan");      
- 
 function kirimEmail($namaPenerima, $emailPenerima, $pesan){
     $url = "https://fimail.vercel.app/send";
     $curl = curl_init($url);
@@ -50,7 +46,8 @@ if(isset($_POST["submit-message"])){
         setFlash("Dikirimkan", "True", "Pesan");       
     }
 }
-// setFlash("Dikirimkan", "True", "Pesan");       
+
+
 ?>
 </div>	<div class="jumbotron d-flex align-items-center">
   <div class="container text-center">
@@ -75,7 +72,9 @@ if(isset($_POST["submit-message"])){
   <div class="triangle triangle-4">
   	<img src="img/obj_triangle.png" alt="">
   </div>
+  
 </div>	<!-- Features Section-->
+	
 <section id="features" class="bg-white">
     <div class="container">
         <div class="section-content">
@@ -209,6 +208,28 @@ if(isset($_POST["submit-message"])){
             </div><!--/ .row -->
         </div>
     </div><!--/ .container -->
+<section id="mentor" class="featurettes overlay bg-fixed" style="background-image: url(img/bg2.jpg);">
+    <div class="container pb-4">
+        <div class="row justify-content-center">
+            <div class="col">
+                <h3 class="text-center pt-3 mb-5">Mentor CESSGO</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+        <?php foreach($data_mentor as $mentor) : ?>
+            <div class="col-md-3 mb-4 mr-4">
+                <div class="card" data-aos="fade-left" style="width: 18rem; box-shadow: 5px 5px 5px rgba(0,0,0,0.4); ">
+                <img src="img/profile/<?= $mentor["foto"]; ?>" class="card-img-top" alt="Foto Mentor">
+                <div class="card-body " style="color:black;">
+                    <h5 class="card-title fw-bold"><?= $mentor["nama"]; ?></h5>
+                    <p class="card-text">Mentor Cessgo bidang <?= $mentor["kelas"]; ?></p>
+                </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
+    </div>
+</section>
 
 
 <section id="portfolio" class="bg-white">
@@ -356,46 +377,9 @@ if(isset($_POST["submit-message"])){
         </div>
     </div>
 </section>
-<!-- End of Portfolio Section -->	<!-- Client Section -->
-<section id="cessgo" class="overlay bg-fixed" style="background-image: url(img/bg2.jpg);">
-    <div class="container">
-        <div class="section-content" data-aos="fade-up">
-            <div class="row ">
-                <div class="col-md-12">
-                    <!-- Section Title -->
-                    <div class="title-wrap mb-5">
-                        <h2>Politeknik <span> Negeri</span> Sriwijaya</h2>
-                    </div>
-                    <!-- End of Section Title -->
-                </div>
-                <!-- Client Holder -->
-                <div class="col-md-12 client-holder">
-                    <div class="client-slider owl-carousel">
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                    </div>
-                    <!-- End of Client Holder -->
-                </div>
-            </div>
-        </div>
-</section>
-<!-- End of Client Section -->	<!-- Reservation Section -->
+<!-- End of Portfolio Section -->	
+
+<!-- Reservation Section -->
 <section id="reservation" class="bg-white section-content">
     <div class="container">
         <div class="row align-items-center">
@@ -438,18 +422,6 @@ if(isset($_POST["submit-message"])){
     </div>
 </section>
 <!-- End of Reservation Section -->	<!-- Features Section-->
-<section id="cta" class="bg-fixed overlay" style="background-image: url(img/bg2.jpg);">
-    <div class="container">
-        <div class="section-content" data-aos="fade-up">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="mb-2">Ayo segera bergabung bersama CESSGO!</h2>
-                    <p></p>
-                    <a href="daftar.php" class="btn btn-outline-primary btn-lg">Registrasi</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <!-- End of Features Section--></div>
 <?php require 'template/footer.php'; ?>

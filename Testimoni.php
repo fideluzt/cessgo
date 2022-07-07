@@ -24,6 +24,7 @@
             <div class="row">
                 <!-- Testimonial -->
                 <div class="testi-content testi-carousel owl-carousel">
+                <?php if(empty($testimoni)) : ?>
                     <div class="testi-item text-center">
                         <i class="testi-icon fa fa-3x fa-quote-left"></i>
                         <h4 class="testi-text"><b>Di CESSGO</b> belajar jadi menyenangkan.<br>kita diajak berdiskusi sambil bermain!</h4>
@@ -36,7 +37,6 @@
                                 <p class="testi-desc mb-0">Mahasiswa Teknik Komputer</p>
                             </div>
                         </div>
-                        
                     </div>
                     <div class="testi-item text-center">
                         <i class="testi-icon fa fa-3x fa-quote-left"></i>
@@ -64,6 +64,23 @@
                             </div>
                         </div>
                     </div>
+                <?php else: ?>
+                    <?php foreach($testimoni as $tes) : ?>
+                        <div class="testi-item text-center">
+                            <i class="testi-icon fa fa-3x fa-quote-left"></i>
+                            <h4 class="testi-text"><?= $tes["testimoni"]; ?></h4>
+                            <div class="testi-meta-inner d-flex justify-content-center align-items-center">
+                                <div class="testi-img mr-2">
+                                    <img src="img/testimoni/<?= $tes["foto"]; ?>" alt="">
+                                </div>
+                                <div class="testi-details">
+                                    <p class="testi-author mb-0 font-weight-bolder"><?= $tes["nama"]; ?></p>
+                                    <p class="testi-desc mb-0"><?= $tes["title"]; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 </div>
                 <!-- End of Testimonial -->
             </div>
@@ -73,43 +90,6 @@
 <!-- End of Testimonial Section-->	<!-- Portfolio Section -->
 </section>
 <!-- End of Blog Section -->	<!-- Features Section-->
-<section id="cessgo" class="overlay bg-fixed" style="background-image: url(img/bg2.jpg);">
-    <div class="container">
-        <div class="section-content" data-aos="fade-up">
-            <div class="row ">
-                <div class="col-md-12">
-                    <!-- Section Title -->
-                    <div class="title-wrap mb-5">
-                        <h2>Politeknik <span> Negeri</span> Sriwijaya</h2>
-                    </div>
-                    <!-- End of Section Title -->
-                </div>
-                <!-- Client Holder -->
-                <div class="col-md-12 client-holder">
-                    <div class="client-slider owl-carousel">
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                        <div class="client-item">
-                            <img class="img-responsive" src="img/polsri.png" alt=" ">
-                        </div>
-                    </div>
-                    <!-- End of Client Holder -->
-                </div>
-            </div>
-        </div>
-</section>
+
 <!-- End of Features Section--></div>
 <?php require 'template/footer.php'; ?>

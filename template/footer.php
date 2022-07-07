@@ -1,3 +1,44 @@
+<section id="cessgo" class="overlay bg-fixed" style="background-image: url(img/bg2.jpg);">
+    <div class="container">
+        <div class="section-content" data-aos="fade-up">
+            <div class="row ">
+                <div class="col-md-12">
+                    <!-- Section Title -->
+                    <div class="title-wrap mb-5">
+                        <h2>Bidang Studi <b>CESSGO</b></h2>
+                    </div>
+                    <!-- End of Section Title -->
+                </div>
+                <!-- Client Holder -->
+                <div class="col-md-12 client-holder">
+                    <div class="client-slider owl-carousel">
+                        <?php foreach($data_bidang as $bidang) : ?>
+                            <div class="client-item">
+                                <img class="img-responsive" src="img/bidang_studi/<?= $bidang["foto"]; ?>" alt=" ">
+                            </div>
+                            <span><b><?= $bidang["nama_bidang"]; ?></b></span>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- End of Client Holder -->
+                </div>
+            </div>
+        </div>
+</section>
+<?php if($url == "index.php") : ?>
+	<section id="cta" class="bg-fixed overlay" style="">
+		<div class="container">
+			<div class="section-content" data-aos="fade-up">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h2 class="mb-2">Ayo segera bergabung bersama CESSGO!</h2>
+						<p></p>
+						<a href="daftar.php" class="btn btn-outline-primary btn-lg">Registrasi</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>	
+<?php endif; ?>
 <footer class="mastfoot my-3">
     <div class="inner container">
          <div class="row">
