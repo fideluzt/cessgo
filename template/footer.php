@@ -88,5 +88,22 @@
 	<!-- Main JS -->
 	<script src="js/app.min.js "></script>
 	<script src="//localhost:35729/livereload.js"></script>
+	<script>
+		function loading(){
+			let target = document.querySelector('.loading');
+			console.log(target);
+			let fadeEffect = setInterval(() => {
+				if(!target.style.opacity){
+					target.style.opacity = 1;
+				}
+				if(target.style.opacity > 0){
+					target.style.opacity -= 0.1;
+				}else{
+					clearInterval(fadeEffect);
+					$('.hide').hide();
+				}
+			}, 40);
+		}
+	</script>
 </body>
 </html>

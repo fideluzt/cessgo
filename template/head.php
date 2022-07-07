@@ -72,10 +72,62 @@ $testimoni = getData("SELECT * FROM testimoni WHERE ket = '1'");
             border-bottom-left-radius: 10px;
             border-top-right-radius: 10px;
         }
+        .lds-facebook {
+        display: inline-block;
+        position: relative;
+        top: 50%;
+        width: 80px;
+        height: 80px;
+        }
+        .lds-facebook div {
+        display: inline-block;
+        position: absolute;
+        left: 8px;
+        width: 16px;
+        background: #ff00cc;
+        animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+        }
+        .lds-facebook div:nth-child(1) {
+        left: 8px;
+        animation-delay: -0.24s;
+        }
+        .lds-facebook div:nth-child(2) {
+        left: 32px;
+        animation-delay: -0.12s;
+        }
+        .lds-facebook div:nth-child(3) {
+        left: 56px;
+        animation-delay: 0;
+        }
+        @keyframes lds-facebook {
+        0% {
+            top: 8px;
+            height: 64px;
+        }
+        50%, 100% {
+            top: 24px;
+            height: 32px;
+        }
+        }
+
+        .loading {
+            z-index: 9999;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            text-align: center;
+            background-color: white;
+        }
+
     </style>
 
 </head>
-<body data-spy="scroll" data-target="#navbar" class="static-layout">
+<body data-spy="scroll" onload="loading();" data-target="#navbar" class="static-layout">
+<div class="hide loading">
+    <div class="lds-facebook"><div></div><div></div><div></div></div>
+</div>
 	<nav id="header-navbar" class="navbar navbar-expand-lg py-4">
     <div class="container">
         <!-- Set Flash -->
