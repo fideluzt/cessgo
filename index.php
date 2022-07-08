@@ -380,7 +380,7 @@ if(isset($_POST["submit-message"])){
 <!-- End of Portfolio Section -->	
 
 <!-- Reservation Section -->
-<section id="reservation" class="bg-white section-content">
+<section id="reservation" class="overlay bg-fixed pt-5 pb-5" style="background-image: url(img/bg2.jpg);">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 offset-lg-1 mb-5 mb-lg-0" data-aos="fade-right">

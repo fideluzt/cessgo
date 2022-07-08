@@ -1,6 +1,6 @@
-<section id="cessgo" class="overlay bg-fixed" style="background-image: url(img/bg2.jpg);">
+<section id="cessgo" <?= $url == "index.php" || $url == "" ? "" : 'class="overlay bg-fixed" style="background-image: url(img/bg2.jpg);"';?> >
     <div class="container">
-        <div class="section-content" data-aos="fade-up">
+        <div class="section-content" data-aos="fade-up" >
             <div class="row ">
                 <div class="col-md-12">
                     <!-- Section Title -->
@@ -14,9 +14,9 @@
                     <div class="client-slider owl-carousel">
                         <?php foreach($data_bidang as $bidang) : ?>
                             <div class="client-item">
-                                <img class="img-responsive" src="img/bidang_studi/<?= $bidang["foto"]; ?>" alt=" ">
+                                <img class="img-responsive d-block" src="img/bidang_studi/<?= $bidang["foto"]; ?>" alt=" ">
+								<p style="font-weight:bold;"><b><?= $bidang["nama_bidang"]; ?></b></p>
                             </div>
-                            <span><b><?= $bidang["nama_bidang"]; ?></b></span>
                         <?php endforeach; ?>
                     </div>
                     <!-- End of Client Holder -->
@@ -24,7 +24,7 @@
             </div>
         </div>
 </section>
-<?php if($url == "index.php") : ?>
+<?php if($url == "index.php" || $url == "") : ?>
 	<section id="cta" class="bg-fixed overlay" style="">
 		<div class="container">
 			<div class="section-content" data-aos="fade-up">

@@ -89,10 +89,18 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="jadwal_admin.php" class="nav-link mt-2 <?= ($link=='jadwal_admin.php') ? 'active' : ''?>">
+            <a href="data_mentor.php" class="nav-link mt-2 <?= ($link=='data_mentor.php') ? 'active' : ''?>">
               <i class="nav-icon fa-solid fa-users"></i>
               <p>
-                Jadwal Kelas & Mentor
+                Data Mentor
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="jadwal_admin.php" class="nav-link mt-2 <?= ($link=='jadwal_admin.php') ? 'active' : ''?>">
+              <i class="nav-icon fa-solid fa-calendar-check"></i>
+              <p>
+                Jadwal Kelas
               </p>
             </a>
           </li>

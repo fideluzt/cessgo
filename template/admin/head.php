@@ -61,6 +61,11 @@ switch ($request_uri) {
     $bread = "Absensi Mahasiswa";
     $link = "absensi_mhs.php";
     break;
+  case '/cessgo/dashboard/data_mentor.php':
+    $title="Data Mentor | CESSGO";
+    $bread = "Data Mentor";
+    $link = "data_mentor.php";
+    break;
   default:
   $title="Dashboard | CESSGO";
    $bread = "Dashboard";

@@ -66,7 +66,7 @@ if(isset($_POST["btn_update_jadwal"])){
           Tambah Data
         </button> -->
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-8">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"> <b>Jadwal Pembelajaran CESSGO</b></h3>
@@ -185,54 +185,7 @@ if(isset($_POST["btn_update_jadwal"])){
             </div>
             <!-- /.card -->
           </div>
-          <!-- /.col -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title"> <b>Data Mentor CESSGO</b></h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                
-                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambahMentor">
-                  <i class="fa-solid fa-circle-plus"></i> Tambah Mentor
-                </button>
-                <div class="table-responsive">
-                  <table id="data_user" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Npm</th>
-                      <th>Nama</th>
-                      <th>Kelas</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php 
-                    $no = 1;
-                    foreach($data_mentor as $mentor) : ?>
-                      <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $mentor["username"]; ?></td>
-                        <td><?= $mentor["nama"]; ?></td>
-                        <td><?= $mentor["kelas"]; ?></td>
-                        <td><?= $mentor["email"]; ?></td>
-                        <td>
-                            <a href="../proses_hapus.php?aksi=hapusMentor&id=<?= $mentor["id"]; ?>"  class="badge badge-danger tombolKonfirmasi" data-konfirmasi="Mentor <?= $mentor["nama"]; ?> "><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                      </tr>
-                    <?php endforeach; ?>
-                    
-                    </tbody>
-                  </table>
-                  </div>
-                </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+         
         </div>
         <!-- /.row -->
       </div>

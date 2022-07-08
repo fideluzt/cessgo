@@ -5,9 +5,9 @@ include '../template/admin/head.php';
  ?>
 <?php include '../template/admin/sidebar.php';
 $daftar_bidang = getData("SELECT * FROM bidang_studi");
-$data_mentor = getData("SELECT * FROM user WHERE level = 'mentor'");
+// $data_mentor = getData("SELECT * FROM user WHERE level = 'mentor'");
 
-setFlash("Ditambahkan", "True", "Bidang_Studi");
+// setFlash("Ditambahkan", "True", "Bidang_Studi");
 // Tambah Bidang Studi
 if(isset($_POST["btn_tambah"])){
   if(tambahBidangStudi($_POST) > 0){
@@ -61,7 +61,6 @@ if(isset($_POST["btn_update"])){
                       <th>Nama Bidang</th>
                       <th>Deskripsi</th>
                       <th>Kuota</th>
-                      <th>Mentor</th>
                       <th>Foto</th>
                       <th>Aksi</th>
                     </tr>
@@ -75,7 +74,6 @@ if(isset($_POST["btn_update"])){
                         <td><?= $bidang["nama_bidang"]; ?></td>
                         <td><?= $bidang["deskripsi"]; ?></td>
                         <td><?= $bidang["kuota"]; ?> Orang</td>
-                        <td><?= $bidang["mentor"]; ?></td>
                        <td><a href="../img/bidang_studi/<?= $bidang["foto"]; ?>" ><i class="fa-solid fa-eye"></i></a></td>
                         <td>
                             <a href="#" class="badge badge-info" data-bs-toggle="modal" data-bs-target="#editBidang<?= $bidang["id"]; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -98,7 +96,7 @@ if(isset($_POST["btn_update"])){
                                         <label for="deskripsi_bidang" class="form-label">Deskripsi Bidang</label>
                                       <textarea name="deskripsi_bidang" placeholder="Masukan Deskripsi Bidang..." id="deskripsi" class="form-control" cols="10" rows="5"><?= $bidang["deskripsi"]; ?></textarea>
                                       </div>
-                                      <div class="mb-3">
+                                      <!-- <div class="mb-3">
                                             <label for="mentor" class="form-label">Mentor</label>
                                             <select class="form-select" id="mentor"  name="mentor" aria-label="Default select example" required>
                                             <option value="-">--Pilih Mentor--</option>
@@ -107,7 +105,7 @@ if(isset($_POST["btn_update"])){
                                                       <option <?= $mentor["nama"] == $bidang["mentor"] ? "selected" : "" ?> value="<?= $mentor["nama"]; ?>"><?= $mentor["nama"]; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
-                                          </div>
+                                          </div> -->
                                       <div class="mb-3">
                                         <label for="kuota" class="form-label">Kuota Kelas</label>
                                         <input type="number" class="form-control" value="<?= $bidang["kuota"]; ?>" placeholder="Masukan Jumlah Kuota Kelas..." name="kuota" id="kuota" aria-describedby="emailHelp" required>
@@ -171,23 +169,9 @@ if(isset($_POST["btn_update"])){
             <label for="deskripsi_bidang" class="form-label">Deskripsi Bidang</label>
            <textarea name="deskripsi_bidang" placeholder="Masukan Deskripsi Bidang..." id="deskripsi" class="form-control" cols="10" rows="5"></textarea>
           </div>
-          <!-- <div class="mb-3">
-            <label for="nama_mentor" class="form-label">Nama Mentor</label>
-            <input type="text" class="form-control" name="nama_mentor" id="nama_mentor" aria-describedby="emailHelp" required>
-          </div> -->
           <div class="mb-3">
             <label for="kuota" class="form-label">Kuota Kelas</label>
             <input type="number" class="form-control" placeholder="Masukan Jumlah Kuota Kelas..." name="kuota" id="kuota" aria-describedby="emailHelp" required>
-          </div>
-          <div class="mb-3">
-            <label for="mentor" class="form-label">Mentor</label>
-            <select class="form-select" id="mentor"  name="mentor" aria-label="Default select example" required>
-              <option value="-">--Pilih Mentor--</option>
-                <?php 
-                  foreach($data_mentor as $mentor) : ?>
-                    <option value="<?= $mentor["nama"]; ?>"><?= $mentor["nama"]; ?></option>
-                <?php endforeach; ?>
-            </select>
           </div>
           <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
