@@ -121,6 +121,10 @@ $testimoni = getData("SELECT * FROM testimoni WHERE ket = '1'");
             background-color: white;
         }
 
+        a {
+            text-decoration: none;
+        }
+
     </style>
 
 </head>
