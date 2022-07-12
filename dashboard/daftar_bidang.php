@@ -11,6 +11,7 @@ $daftar_bidang = getData("SELECT * FROM bidang_studi");
 // Tambah Bidang Studi
 if(isset($_POST["btn_tambah"])){
   if(tambahBidangStudi($_POST) > 0){
+       setFlash("Ditambahkan", "True", "Bidang_Studi");
       echo '<script>window.location="daftar_bidang.php";</script>';
     }else{
     setFlash("Ditambahkan", "False", "Bidang_Studi");
