@@ -9,9 +9,8 @@ $request_uri = $uri_parts[0];
 
 
 switch ($request_uri) {
-  
   case '/cessgo/visi_misi.php':
-    $title="Visi Misi | CESSGO";
+    $title="";
     break;
   case '/cessgo/program.php':
     $title="Program | CESSGO";
@@ -21,6 +20,9 @@ switch ($request_uri) {
     break;
   case '/cessgo/testimoni.php':
     $title="Testimoni | CESSGO";
+    break;
+  case '/cessgo/review.php':
+    $title="Review | CESSGO";
     break;
   default :
     $title="Home | CESSGO";
@@ -139,7 +141,7 @@ $testimoni = getData("SELECT * FROM testimoni WHERE ket = '1'");
         <a class="navbar-brand d-flex align-items-center text-white " href="index.php">
            <img src="img/tekkom.png" width="40" class="mr-2" alt="Logo Tekkom"> <h2 class="font-weight-bolder mb-0">CESSGO</h2>
         </a>
-        <a class="navbar-brand d-flex align-items-center <?= $url == "index.php" ? "link-active" : "text-white"; ?>" href="index.php">
+        <a class="navbar-brand d-flex align-items-center <?= $url == "index.php" || $url == "" ? "link-active" : "text-white"; ?>" href="index.php">
             <h5 class="font-weight-bolder mb-0">Home</h5>
         </a>
         <a class="navbar-brand d-flex align-items-center <?= $url == "visi_misi.php" ? "link-active" : "text-white"; ?> " href="visi_misi.php">
@@ -150,6 +152,9 @@ $testimoni = getData("SELECT * FROM testimoni WHERE ket = '1'");
         </a>
         <a class="navbar-brand d-flex align-items-center <?= $url == "bidang_studi.php" ? "link-active" : "text-white"; ?>" href="bidang_studi.php">
             <h5 class="font-weight-bolder mb-0">Bidang Studi</h5>
+        </a>
+        <a class="navbar-brand d-flex align-items-center <?= $url == "review.php" ? "link-active" : "text-white"; ?>" href="review.php">
+            <h5 class="font-weight-bolder mb-0">Review</h5>
         </a>
         <a class="navbar-brand d-flex align-items-center <?= $url == "testimoni.php" ? "link-active" : "text-white"; ?>" href="testimoni.php">
             <h5 class="font-weight-bolder mb-0">Testimoni</h5>
